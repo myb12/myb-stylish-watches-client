@@ -1,0 +1,22 @@
+.banner-container{
+    background-image: url(https://static.chrono24.com/cdn-cgi/image/f=auto,metadata=none,q=65,w=1920/images/default/home/hero/new-visitor/racingwatches-lg-master.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    padding: 250px 0;
+}
+
+.banner-container::before {
+    background-color: #000;
+    bottom: 0;
+    content: "";
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}

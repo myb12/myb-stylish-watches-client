@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { FaBars, FaWindowClose } from 'react-icons/fa';
 import './Navigation.css';
@@ -17,6 +17,9 @@ const activeStyle = {
 
 const Navigation = () => {
     const [burgerItem, setBurgerItem] = useState(false);
+    const location = useLocation();
+
+
     const mobileDevice = useMediaQuery('(max-width:600px)');
     // console.log(mobileDevice);
 
@@ -34,7 +37,7 @@ const Navigation = () => {
 
     return (
         <Box className="app-bar" sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed" sx={{ backgroundColor: '#03a84e' }}>
+            <AppBar position="fixed" sx={{ backgroundColor: '#04293a' }}>
                 <Toolbar>
                     <span href="/#" className={!mobileDevice ? 'display-none' : 'nav-icon'} onClick={handleClick}>
                         <FaBars />
@@ -50,9 +53,14 @@ const Navigation = () => {
                         />
                     </Typography>
                     <Box className={mobileDevice ? 'display-none' : 'nav'}>
-                        <NavLink activeStyle={activeStyle} to="/home" className="nav-item">
-                            Home
-                        </NavLink>
+                        {
+                            location.pathname === '/' ? <NavLink activeStyle={activeStyle} to="/" className="nav-item">
+                                Home
+                            </NavLink> :
+                                <NavLink activeStyle={activeStyle} to="/home" className="nav-item">
+                                    Home
+                                </NavLink>
+                        }
                         <NavLink activeStyle={activeStyle} to="/services" className="nav-item">
                             Services
                         </NavLink>
@@ -72,7 +80,7 @@ const Navigation = () => {
                     />
                 </Toolbar>
             </AppBar>
-            <Box sx={{ bgcolor: 'primary.main' }} className={burgerItem ? 'burger-menu-item burger-menu-visible' : 'burger-menu-item'}>
+            <Box sx={{ bgcolor: '#c39052' }} className={burgerItem ? 'burger-menu-item burger-menu-visible' : 'burger-menu-item'}>
                 <FaWindowClose className="icon-close" onClick={handleClick} />
                 <NavLink activeStyle={activeStyle} to="/">
                     Home
