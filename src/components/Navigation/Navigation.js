@@ -11,8 +11,9 @@ import './Navigation.css';
 import logo from '../../images/myb.svg';
 
 const activeStyle = {
+    borderTop: '2px solid #fff',
     borderBottom: '2px solid #fff',
-    paddingBottom: 6
+    padding: '3px 0'
 }
 
 const Navigation = () => {
@@ -43,16 +44,16 @@ const Navigation = () => {
                         <FaBars />
                     </span>
 
-
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ marginLeft: 'auto' }}>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, }} style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', }}>
                         <Avatar
                             alt="Remy Sharp"
                             src={logo}
-                            sx={{ width: 40, height: 40, p: 1 }}
+                            sx={{ width: 60, height: 60, p: 1 }}
                             className={mobileDevice ? 'display-none' : ''}
                         />
+                        <small className={mobileDevice ? 'display-none' : ''} style={{ color: '#c39052' }}>Stylish Watch</small>
                     </Typography>
-                    <Box className={mobileDevice ? 'display-none' : 'nav'}>
+                    <Box className={mobileDevice ? 'display-none' : 'nav topBotomBordersOut'}>
                         {
                             location.pathname === '/' ? <NavLink activeStyle={activeStyle} to="/" className="nav-item">
                                 Home
@@ -80,7 +81,7 @@ const Navigation = () => {
                     />
                 </Toolbar>
             </AppBar>
-            <Box sx={{ bgcolor: '#c39052' }} className={burgerItem ? 'burger-menu-item burger-menu-visible' : 'burger-menu-item'}>
+            <Box sx={{ bgcolor: '#04293a' }} className={burgerItem ? 'burger-menu-item burger-menu-visible' : 'burger-menu-item'}>
                 <FaWindowClose className="icon-close" onClick={handleClick} />
                 <NavLink activeStyle={activeStyle} to="/">
                     Home

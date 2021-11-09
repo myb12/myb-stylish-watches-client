@@ -1,0 +1,19 @@
+ .title {
+    border-bottom: 1px solid #d7e1dc;
+    font-size: 30px;
+    margin-bottom: 50px !important;
+    padding-bottom: 24px;
+    position: relative;
+    text-align: center;
+}
+
+.title:before {
+    background-color: #c39052;
+    content: "";
+    height: 3px;
+    width: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    bottom: -2px;
+}
