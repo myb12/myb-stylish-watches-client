@@ -17,6 +17,7 @@ import { useState } from 'react';
 import './Dashboard.css'
 import { BsMinecartLoaded } from 'react-icons/bs';
 import MyOrders from './User/MyOrders/MyOrders';
+import Review from './User/Review/Review';
 // import DashboardHome from '../DashboardHome/DashboardHome';
 // import MakeAdmin from '../MakeAdmin/MakeAdmin';
 // import AddDoctor from '../AddDoctor/AddDoctor';
@@ -79,7 +80,7 @@ function Dashboard(props) {
             </List>
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to="/home" className="dashboard-item">
+                    <Link to={`${url}/review`} className="dashboard-item">
                         <span className="dashboard-item-content">
                             <MdReviews style={{ marginRight: 10, }} />
                             Review
@@ -162,6 +163,9 @@ function Dashboard(props) {
                 <Switch>
                     <Route path={`${path}/myOrders`}>
                         <MyOrders />
+                    </Route>
+                    <Route path={`${path}/review`}>
+                        <Review />
                     </Route>
                 </Switch>
 
