@@ -6,39 +6,57 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-import { Switch, Route, Link, useRouteMatch, NavLink } from "react-router-dom";
-import { MdPayment, MdReviews } from 'react-icons/md';
+import { Switch, Route, Link, useRouteMatch, NavLink, useLocation } from "react-router-dom";
+import { MdDashboardCustomize, MdManageAccounts, MdPayment, MdReviews } from 'react-icons/md';
 import { useState } from 'react';
 import './Dashboard.css'
 import { BsMinecartLoaded } from 'react-icons/bs';
 import MyOrders from './User/MyOrders/MyOrders';
 import Review from './User/Review/Review';
+import ManageAllOrders from './Admin/ManageAllOrders/ManageAllOrders';
+import AddProduct from './Admin/AddProduct/AddProduct';
+import MakeAdmin from './Admin/MakeAdmin/MakeAdmin';
+import ManageProducts from './Admin/ManageProducts/ManageProducts';
+import { AiFillSetting, AiOutlineRollback } from 'react-icons/ai';
+import { GoDiffAdded } from 'react-icons/go';
 // import DashboardHome from '../DashboardHome/DashboardHome';
 // import MakeAdmin from '../MakeAdmin/MakeAdmin';
 // import AddDoctor from '../AddDoctor/AddDoctor';
 // import useAuth from '../../../hooks/useAuth'
 // import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 
-const drawerWidth = 200;
+const drawerWidth = 260;
 
 function Dashboard(props) {
     const { window } = props;
+    const location = useLocation();
     const [mobileOpen, setMobileOpen] = useState(false);
     let { path, url } = useRouteMatch();
     // const { admin } = useAuth();
-
+    const dashboardPageUrl = location.pathname.split('/dashboard/')[1];
+    console.log(dashboardPageUrl);
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
 
     const drawer = (
         <div>
-            <Toolbar />
+            {/* <Toolbar /> */}
+            <List style={{ padding: "0" }}>
+                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                    <Link to="/" className="dashboard-item">
+                        <span className="dashboard-item-content">
+                            <AiOutlineRollback style={{ marginRight: 10, }} />
+                            Back to home
+                        </span>
+                    </Link>
+                </Button>
+            </List>
+
             <Divider />
 
 
@@ -50,9 +68,9 @@ function Dashboard(props) {
             } */}
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to="/home" className="dashboard-item">
+                    <Link to="/home" className="dashboard-item" style={{ borderLeft: !dashboardPageUrl && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
-                            <MdPayment style={{ marginRight: 10, }} />
+                            <MdDashboardCustomize style={{ marginRight: 10, }} />
                             Dashboard
                         </span>
                     </Link>
@@ -70,7 +88,7 @@ function Dashboard(props) {
             </List>
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to={`${url}/myOrders`} className="dashboard-item">
+                    <Link to={`${url}/myOrders`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'myOrders' && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
                             <BsMinecartLoaded style={{ marginRight: 10, }} />
                             My order
@@ -80,7 +98,7 @@ function Dashboard(props) {
             </List>
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to={`${url}/review`} className="dashboard-item">
+                    <Link to={`${url}/review`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'review' && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
                             <MdReviews style={{ marginRight: 10, }} />
                             Review
@@ -89,8 +107,52 @@ function Dashboard(props) {
                 </Button>
             </List>
 
+            <Divider />
 
-        </div>
+            <List style={{ padding: "0" }}>
+                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                    <Link to={`${url}/manageAllOrders`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'manageAllOrders' && '2px solid #04293a' }}>
+                        <span className="dashboard-item-content">
+                            <BsMinecartLoaded style={{ marginRight: 10, }} />
+                            Manage all Orders
+                        </span>
+                    </Link>
+                </Button>
+            </List>
+
+            <List style={{ padding: "0" }}>
+                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                    <Link to={`${url}/addProduct`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'addProduct' && '2px solid #04293a' }}>
+                        <span className="dashboard-item-content">
+                            <GoDiffAdded style={{ marginRight: 10, }} />
+                            Add a Product
+                        </span>
+                    </Link>
+                </Button>
+            </List>
+            <List style={{ padding: "0" }}>
+                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                    <Link to={`${url}/makeAdmin`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'makeAdmin' && '2px solid #04293a' }}>
+                        <span className="dashboard-item-content">
+                            <MdManageAccounts style={{ marginRight: 10, }} />
+                            Make Admin
+                        </span>
+                    </Link>
+                </Button>
+            </List>
+            <List style={{ padding: "0" }}>
+                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                    <Link to={`${url}/manageProducts`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'manageProducts' && '2px solid #04293a' }}>
+                        <span className="dashboard-item-content">
+                            <AiFillSetting style={{ marginRight: 10, }} />
+                            Manage Products
+                        </span>
+                    </Link>
+                </Button>
+            </List>
+
+
+        </div >
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
@@ -166,6 +228,18 @@ function Dashboard(props) {
                     </Route>
                     <Route path={`${path}/review`}>
                         <Review />
+                    </Route>
+                    <Route path={`${path}/manageAllOrders`}>
+                        <ManageAllOrders />
+                    </Route>
+                    <Route path={`${path}/addProduct`}>
+                        <AddProduct />
+                    </Route>
+                    <Route path={`${path}/makeAdmin`}>
+                        <MakeAdmin />
+                    </Route>
+                    <Route path={`${path}/manageProducts`}>
+                        <ManageProducts />
                     </Route>
                 </Switch>
 

@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { MdOutlineCancel } from 'react-icons/md';
+import { Button } from '@mui/material';
 
 
 
@@ -42,29 +44,55 @@ const rows = [
     createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-const TableComponent = () => {
+const TableComponent = ({ forAdmin, forManageProducts }) => {
     return (
         <TableContainer component={Paper} sx={{ maxWidth: '90vw' }}>
             <Table aria-label="customized table">
                 <TableHead>
                     <TableRow>
-                        <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                        <StyledTableCell align="right">Calories</StyledTableCell>
-                        <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+                        {
+                            forAdmin && <><StyledTableCell align="left">Name</StyledTableCell>
+                                <StyledTableCell align="left">Email</StyledTableCell></>
+                        }
+                        <StyledTableCell>Product Name</StyledTableCell>
+                        <StyledTableCell align="left">Price</StyledTableCell>
+                        {
+                            !forManageProducts && <StyledTableCell align="left">Order Status</StyledTableCell>
+                        }
+
+                        <StyledTableCell align="left">Image</StyledTableCell>
+                        <StyledTableCell align="left">Action</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <StyledTableRow key={row.name}>
+                            {
+                                forAdmin && <><StyledTableCell align="left">Mohammad Yasin</StyledTableCell>
+                                    <StyledTableCell align="left">mohammadyasinbappy@gmail.com</StyledTableCell></>
+                            }
                             <StyledTableCell component="th" scope="row">
                                 {row.name}
                             </StyledTableCell>
-                            <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                            <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                            <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                            <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                            <StyledTableCell align="left">{row.calories}</StyledTableCell>
+                            {
+                                !forManageProducts && <StyledTableCell align="left" >
+                                    Pending
+                                    {
+                                        forAdmin && <><br />
+                                            <Button className="btn-regular" style={{ marginTop: 5 }}>Approve</Button></>
+                                    }
+                                </StyledTableCell>
+                            }
+
+                            <StyledTableCell align="left">
+
+                                <img height="60" width="60" src="  https://cdn2.chrono24.com/images/uhren/21179480-zupdskf0ieetp9nqzeazzg2g-Square210.jpg" alt="" />
+                            </StyledTableCell>
+                            <StyledTableCell align="left">
+                                <MdOutlineCancel style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
+                            </StyledTableCell>
+
                         </StyledTableRow>
                     ))}
                 </TableBody>
