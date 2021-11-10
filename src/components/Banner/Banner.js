@@ -17,7 +17,7 @@ const Banner = () => {
                     Find your dream watch on MYB Stylish Watches.
                 </Typography>
 
-                <Button sx={{ color: '#fff', backgroundColor: '#04293a' }} className="btn-banner">Explore</Button>
+                <Button className="btn-regular">Explore</Button>
             </Container>
         </Box>
     );

@@ -6,7 +6,7 @@ import './Products.css'
 const Products = () => {
     return (
         <Container style={{ marginTop: 100 }}>
-            <Typography variant="h4" className="title">Some of Our Services</Typography>
+            <Typography variant="h4" className="title">Some of Our Products</Typography>
             <Grid container spacing={3}>
                 {
                     [...Array(6)].map((el, i) => <CardComponent key={i} />)

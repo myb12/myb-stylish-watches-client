@@ -86,7 +86,7 @@ function FaqAccordion() {
             </Accordion>
             <Accordion style={{
                 margin: "10px 0px",
-            }} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+            }} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon style={{ color: '#c39052' }} />}
                     aria-controls="panel3bh-content"

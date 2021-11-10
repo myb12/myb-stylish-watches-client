@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Dashboard from './components/Dashboard/Dashboard';
+import Purchase from './components/Purchase/Purchase';
 
 function App() {
   return (
@@ -15,8 +16,12 @@ function App() {
           <Home />
         </Route>
 
-        <Route  path="/dashboard">
+        <Route path="/dashboard">
           <Dashboard />
+        </Route>
+
+        <Route path="/purchase">
+          <Purchase />
         </Route>
       </Switch>
     </Router>

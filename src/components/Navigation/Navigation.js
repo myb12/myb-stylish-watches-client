@@ -61,8 +61,8 @@ const Navigation = () => {
                                     Home
                                 </NavLink>
                         }
-                        <NavLink activeStyle={activeStyle} to="/services" className="nav-item">
-                            Services
+                        <NavLink activeStyle={activeStyle} to="/purchase" className="nav-item">
+                            Purchase
                         </NavLink>
                         <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
                             Dashboard

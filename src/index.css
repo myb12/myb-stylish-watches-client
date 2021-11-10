@@ -12,4 +12,33 @@ code {
     monospace;
 }
 
+.btn-regular{
+    color: #fff !important;
+    background-color: #04293a !important; 
+    transition: 0.28s ease-in-out !important;
+    height:100% !important;
+}
 
+.btn-regular:hover{
+    background-color: #c39052 !important;
+}
+
+ .title {
+    border-bottom: 1px solid #04293a5d;
+    font-size: 30px;
+    margin-bottom: 50px !important;
+    padding-bottom: 24px;
+    position: relative;
+    text-align: center;
+}
+
+.title:before {
+    background-color: #c39052;
+    content: "";
+    height: 3px;
+    width: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    bottom: -2px;
+}
