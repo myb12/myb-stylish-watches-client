@@ -19,7 +19,7 @@
 .burger-menu-item{
     z-index: 9999;
     padding: 10px;
-    position: absolute;
+    position: fixed;
     top: 67px;
     left: 10px;
     display: flex;
