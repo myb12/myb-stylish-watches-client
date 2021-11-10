@@ -13,7 +13,6 @@ import logo from '../../images/myb.svg';
 const activeStyle = {
     borderTop: '2px solid #fff',
     borderBottom: '2px solid #fff',
-    padding: '3px 0'
 }
 
 const Navigation = () => {
@@ -65,8 +64,8 @@ const Navigation = () => {
                         <NavLink activeStyle={activeStyle} to="/services" className="nav-item">
                             Services
                         </NavLink>
-                        <NavLink activeStyle={activeStyle} to="/about" className="nav-item">
-                            About
+                        <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
+                            Dashboard
                         </NavLink>
                         <NavLink activeStyle={activeStyle} to="/contact-us" className="nav-item">
                             Contact us
