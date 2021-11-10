@@ -1,0 +1,17 @@
+
+
+    /* fontSize: 40,
+    marginRight: 10,
+    backgroundColor: "#00756a",
+    padding: 10,
+    borderRadius: 50,
+    color: "#fff", */
+
+.accordion-icon{
+   font-size: 40;
+   margin-right: 10px;
+   background-color: #04293a;
+   border-radius: 50px;
+   padding: 10px;
+   color:#fff
+}
