@@ -54,9 +54,9 @@ const useStyles = makeStyles({
 const Footer = () => {
     const classes = useStyles();
     return (
-        <div style={{ marginTop: 100,}}>
+        <div style={{ marginTop: 100, }}>
             <Divider />
-            <div style={{ maxWidth: "1200px", margin: "0 auto", padding: '50px 0'  }}>
+            <div style={{ maxWidth: "1200px", margin: "0 auto", padding: '50px 20px' }}>
                 <Grid container spacing={1}>
                     <Grid item xs={6} sm={6} md={6} lg={3}>
                         <Typography
