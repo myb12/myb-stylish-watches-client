@@ -4,11 +4,12 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { FaBars, FaWindowClose } from 'react-icons/fa';
 import './Navigation.css';
 import logo from '../../images/myb.svg';
+import useAuth from '../../hooks/useAuth';
 
 const activeStyle = {
     borderTop: '2px solid #fff',
@@ -18,6 +19,9 @@ const activeStyle = {
 const Navigation = () => {
     const [burgerItem, setBurgerItem] = useState(false);
     const location = useLocation();
+    const history = useHistory();
+
+    const { user, logOut } = useAuth();
 
 
     const mobileDevice = useMediaQuery('(max-width:600px)');
@@ -27,7 +31,17 @@ const Navigation = () => {
         setBurgerItem(!burgerItem);
     }
 
-    console.log(burgerItem);
+    const handleScroll = () => {
+        window.scrollTo(0, 0);
+    }
+
+    const handleLogOut = (e) => {
+        e.preventDefault();
+        logOut();
+        history.push('/');
+    }
+
+    console.log(user);
 
     // const handleChange = (event) => {
     //   setAuth(event.target.checked);
@@ -53,6 +67,9 @@ const Navigation = () => {
                         <small className={mobileDevice ? 'display-none' : ''} style={{ color: '#c39052' }}>Stylish Watch</small>
                     </Typography>
                     <Box className={mobileDevice ? 'display-none' : 'nav topBotomBordersOut'}>
+                        <NavLink activeStyle={activeStyle} to="/contact-us" className="nav-item">
+                            {user?.displayName}
+                        </NavLink>
                         {
                             location.pathname === '/' ? <NavLink activeStyle={activeStyle} to="/" className="nav-item">
                                 Home
@@ -70,6 +87,15 @@ const Navigation = () => {
                         <NavLink activeStyle={activeStyle} to="/contact-us" className="nav-item">
                             Contact us
                         </NavLink>
+
+                        {
+                            user.email ?
+                                <a href="/" onClick={handleLogOut} className="nav-item">Log out</a>
+                                :
+                                <NavLink onClick={handleScroll} activeStyle={activeStyle} to="/login" className="nav-item">
+                                    Login
+                                </NavLink>
+                        }
 
                     </Box>
                     <Avatar
@@ -95,7 +121,7 @@ const Navigation = () => {
                     Contact us
                 </NavLink>
             </Box>
-        </Box>
+        </Box >
     );
 };
 
