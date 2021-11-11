@@ -1,5 +1,5 @@
 import { TextareaAutosize } from '@mui/core';
-import { Button, Container, Rating, Typography } from '@mui/material';
+import { Button, Container, Rating, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import './Review.css'
 
@@ -26,13 +26,22 @@ const Review = () => {
         <Container maxWidth="md">
             <Typography variant="h4" className="title">Add a Review</Typography>
             <form onSubmit={handleSubmit}>
-                <TextareaAutosize
+                <TextField
+                    placeholder="Please Add your Review"
+                    label="Add Review"
+                    multiline
+                    maxRows={10}
+                    rows={5}
+                    style={{ width: '100%', marginBottom: 8 }}
+                    onChange={handleChange}
+                />
+                {/* <TextareaAutosize
                     aria-label="minimum height"
                     minRows={10}
                     placeholder="Please Add your Review"
                     style={{ width: '100%' }}
                     onChange={handleChange}
-                />
+                /> */}
 
                 <Typography component="legend">Rating</Typography>
                 <Rating

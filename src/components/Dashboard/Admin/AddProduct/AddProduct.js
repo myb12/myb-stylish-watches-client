@@ -42,11 +42,21 @@ const AddProduct = () => {
                     onChange={handleOnChange}
                     variant="standard" />
 
-                <TextareaAutosize
+                {/* <TextareaAutosize
                     aria-label="minimum height"
                     minRows={10}
                     placeholder="Product description"
                     style={{ width: '100%', marginLeft: 8, marginTop: 8 }}
+                    onChange={handleOnChange}
+                /> */}
+
+                <TextField
+                    placeholder="Please Add your Review"
+                    label="Add Review"
+                    multiline
+                    maxRows={10}
+                    rows={5}
+                    style={{ width: '100%', margin: '8px 0 8px 8px' }}
                     onChange={handleOnChange}
                 />
 
@@ -61,7 +71,7 @@ const AddProduct = () => {
                     sx={{ ml: 1 }}
                 />
                 <br />
-                <Button sx={{ mt: 2,ml:1 }} type="submit" className="btn-regular">Purchase Now</Button>
+                <Button sx={{ mt: 2, ml: 1 }} type="submit" className="btn-regular">Purchase Now</Button>
             </form>
         </Container >
     );
