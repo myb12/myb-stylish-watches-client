@@ -38,10 +38,10 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // if (data.insertedId) {
-                //     alert('Tour Added Successfully');
-                //     history.push('/home');
-                // }
+                if (data.insertedId) {
+                    alert('Product Added Successfully');
+                    history.push('/home');
+                }
             })
 
     }

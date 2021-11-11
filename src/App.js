@@ -25,7 +25,7 @@ function App() {
             <Dashboard />
           </Route>
 
-          <Route path="/purchase">
+          <Route path="/purchase/:productId">
             <Purchase />
           </Route>
           <Route path="/login">

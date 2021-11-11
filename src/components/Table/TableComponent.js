@@ -32,19 +32,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-const TableComponent = ({ forAdmin, forManageProducts }) => {
+const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete }) => {
     return (
         <TableContainer component={Paper} sx={{ maxWidth: '90vw' }}>
             <Table aria-label="customized table">
@@ -65,32 +54,22 @@ const TableComponent = ({ forAdmin, forManageProducts }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                            {
-                                forAdmin && <><StyledTableCell align="left">Mohammad Yasin</StyledTableCell>
-                                    <StyledTableCell align="left">mohammadyasinbappy@gmail.com</StyledTableCell></>
-                            }
+                    {myOrders?.map((order) => (
+                        <StyledTableRow key={order._id}>
                             <StyledTableCell component="th" scope="row">
-                                {row.name}
+                                {order.title}
                             </StyledTableCell>
-                            <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                            {
-                                !forManageProducts && <StyledTableCell align="left" >
-                                    Pending
-                                    {
-                                        forAdmin && <><br />
-                                            <Button className="btn-regular" style={{ marginTop: 5 }}>Approve</Button></>
-                                    }
-                                </StyledTableCell>
-                            }
+                            <StyledTableCell align="left">{order.price}</StyledTableCell>
+                            <StyledTableCell align="left" >
+                                {order.orderStatus}
+                            </StyledTableCell>
 
                             <StyledTableCell align="left">
 
-                                <img height="60" width="60" src="  https://cdn2.chrono24.com/images/uhren/21179480-zupdskf0ieetp9nqzeazzg2g-Square210.jpg" alt="" />
+                                <img height="60" width="60" src={order.imgURL} alt="" />
                             </StyledTableCell>
                             <StyledTableCell align="left">
-                                <MdOutlineCancel style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
+                                <MdOutlineCancel onClick={() => handleDelete(order._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
                             </StyledTableCell>
 
                         </StyledTableRow>

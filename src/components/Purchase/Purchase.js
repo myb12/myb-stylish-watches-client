@@ -1,27 +1,60 @@
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import Navigation from '../Navigation/Navigation';
 
 const Purchase = () => {
-    const [loginData, setLoginData] = useState({ name: 'yasin' });
+    // const [loginData, setLoginData] = useState({});
+    const { user } = useAuth();
+    const [specificProduct, setSpecificProduct] = useState({});
     const history = useHistory();
+    const { productId } = useParams();
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/product/${productId}`)
+            .then(res => res.json())
+            .then(data => {
+                setSpecificProduct(data);
+            })
+    }, [])
+
 
     // const { user, registerUser, isLoading, authError } = useAuth();
 
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
-        const newLoginData = { ...loginData };
-        newLoginData[field] = value;
-        setLoginData(newLoginData);
-        // console.log(loginData);
+        const newProduct = { ...specificProduct };
+        newProduct[field] = value;
+        setSpecificProduct(newProduct);
+        // console.log(specificProduct);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(loginData);
+
+        specificProduct.name = user.displayName;
+        specificProduct.email = user.email;
+        specificProduct.orderStatus = "Pending";
+        delete specificProduct._id;
+        delete specificProduct.description;
+
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(specificProduct)
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.insertedId) {
+                    alert('Order processed successfully');
+                    history.push('/dashboard/myOrders')
+                }
+            })
     }
 
     return (
@@ -31,7 +64,7 @@ const Purchase = () => {
                 <Typography variant="h4" className="title">Purchase</Typography>
 
                 <Box style={{ display: 'flex', justifyContent: 'center' }}>
-                    <img style={{ maxWidth: '100%' }} src="https://cdn2.chrono24.com/images/uhren/21179480-zupdskf0ieetp9nqzeazzg2g-Square210.jpg" alt="" />
+                    <img style={{ width: 200, }} src={specificProduct.imgURL} alt="" />
                 </Box>
                 <form onSubmit={handleSubmit}>
                     <TextField
@@ -41,15 +74,14 @@ const Purchase = () => {
                         id="standard-basic"
                         label="Your Name"
                         name="name"
-                        value={loginData?.name || ''
-                        }
+                        value={user?.displayName || ''}
                         onChange={handleOnChange}
                         variant="standard" />
                     <TextField
                         sx={{
                             width: '100%', m: 1
                         }}
-
+                        value={user?.email || ''}
                         label="Your Email"
                         name="email"
                         type="email"
@@ -77,6 +109,7 @@ const Purchase = () => {
                         sx={{
                             width: '100%', m: 1
                         }}
+                        value={specificProduct?.title || ''}
                         id="standard-basic"
                         label="Product Name"
                         name="title"
@@ -86,12 +119,13 @@ const Purchase = () => {
                         sx={{
                             width: '100%', m: 1
                         }}
+                        value={specificProduct?.title || ''}
                         id="standard-basic"
                         label="Product Price"
                         name="price"
                         onChange={handleOnChange}
                         variant="standard" />
-                    <Button sx={{ m: 1 }} type="submit" className="btn-regular">Purchase Now</Button>
+                    <Button sx={{ m: 1 }} type="submit" className="btn-regular">Order Purchase</Button>
                 </form>
             </Container>
         </>
