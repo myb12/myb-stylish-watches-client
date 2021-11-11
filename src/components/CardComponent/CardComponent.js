@@ -12,7 +12,7 @@ const CardComponent = () => {
                 <Box sx={{ display: 'flex', justifyContent: 'center' }} className="image-container">
                     <CardMedia
                         component="img"
-                        image="https://cdn2.chrono24.com/images/uhren/21179480-zupdskf0ieetp9nqzeazzg2g-Square210.jpg"
+                        image="https://i.ibb.co/J20R3sX/product3.webp"
                     />
                 </Box>
                 <CardContent sx={{ pt: 0 }}>

@@ -1,16 +1,51 @@
 import { Button, Container, Rating, TextField, Typography } from '@mui/material';
 import { TextareaAutosize } from '@mui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
+import { useHistory } from 'react-router';
 
 const AddProduct = () => {
-    const [value, setValue] = useState(2);
+    const [rating, setRating] = useState(0);
+    const [product, setProduct] = useState({});
+    const history = useHistory();
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        const newProduct = { ...product };
+        newProduct[name] = value;
+        // newProduct.rating = rating;
+        setProduct(newProduct);
+    }
+
+    //  https://i.ibb.co/J20R3sX/product3.webp
+
+    // useEffect(() => {
+    //     const newProduct = { ...product };
+    //     newProduct.rating = rating;
+    // }, [rating])
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        console.log(product);
+        fetch('http://localhost:5000/product', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // if (data.insertedId) {
+                //     alert('Tour Added Successfully');
+                //     history.push('/home');
+                // }
+            })
+
     }
 
-    const handleOnChange = () => { }
     return (
         <Container Container maxWidth="md" >
             <Typography variant="h4" className="title">Add a Product</Typography>
@@ -22,7 +57,7 @@ const AddProduct = () => {
                     id="standard-basic"
                     label="Product Name"
                     name="title"
-                    onChange={handleOnChange}
+                    onChange={handleChange}
                     variant="standard" />
 
                 <TextField
@@ -31,7 +66,7 @@ const AddProduct = () => {
                     }}
                     label="Product Price"
                     name="price"
-                    onChange={handleOnChange}
+                    onChange={handleChange}
                     variant="standard" />
                 <TextField
                     sx={{
@@ -39,7 +74,7 @@ const AddProduct = () => {
                     }}
                     label="Image URL"
                     name="imgURL"
-                    onChange={handleOnChange}
+                    onChange={handleChange}
                     variant="standard" />
 
                 {/* <TextareaAutosize
@@ -47,29 +82,38 @@ const AddProduct = () => {
                     minRows={10}
                     placeholder="Product description"
                     style={{ width: '100%', marginLeft: 8, marginTop: 8 }}
-                    onChange={handleOnChange}
+                    onChange={handleChange}
                 /> */}
 
                 <TextField
-                    placeholder="Please Add your Review"
-                    label="Add Review"
+                    label="Product Desription"
+                    name="description"
                     multiline
-                    maxRows={10}
                     rows={5}
                     style={{ width: '100%', margin: '8px 0 8px 8px' }}
-                    onChange={handleOnChange}
+                    onChange={handleChange}
                 />
 
+                <TextField
+                    sx={{
+                        width: '100%', m: 1
+                    }}
+                    label="Please Give Rating Between 0 to 5"
+                    type="number"
+                    name="rating"
+                    onChange={handleChange}
+                    variant="standard" />
 
-                <Typography component="legend" sx={{ ml: 1 }}>Rating</Typography>
+
+                {/* <Typography component="legend" sx={{ ml: 1 }}>Rating</Typography>
                 <Rating
-                    name="simple-controlled"
-                    value={value}
+
+                    value={rating}
                     onChange={(event, newValue) => {
-                        setValue(newValue);
+                        setRating(newValue);
                     }}
                     sx={{ ml: 1 }}
-                />
+                /> */}
                 <br />
                 <Button sx={{ mt: 2, ml: 1 }} type="submit" className="btn-regular">Purchase Now</Button>
             </form>

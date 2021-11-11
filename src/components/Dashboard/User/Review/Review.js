@@ -6,7 +6,7 @@ import './Review.css'
 const Review = () => {
     const [value, setValue] = useState(2);
     const [review, setReview] = useState({ review: '', rating: '' })
-    console.log(value);
+   
 
     const handleChange = (e) => {
         const newReview = { ...review }
