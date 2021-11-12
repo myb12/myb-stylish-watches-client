@@ -33,7 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete }) => {
+const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, allOrders }) => {
     return (
         <TableContainer component={Paper} sx={{ maxWidth: '90vw' }}>
             <Table aria-label="customized table">
@@ -68,6 +68,40 @@ const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete })
 
                                 <img height="60" width="60" src={order.imgURL} alt="" />
                             </StyledTableCell>
+                            <StyledTableCell align="left">
+                                <MdOutlineCancel onClick={() => handleDelete(order._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
+                            </StyledTableCell>
+
+                        </StyledTableRow>
+                    ))}
+                    {allOrders?.map((order) => (
+                        <StyledTableRow key={order._id}>
+                            <StyledTableCell component="th" scope="row">
+                                {order.name}
+                            </StyledTableCell>
+
+                            <StyledTableCell align="left">
+                                {order.email}
+                            </StyledTableCell>
+
+                            <StyledTableCell align="left" >
+                                {order.title}
+                            </StyledTableCell>
+
+                            <StyledTableCell align="left" >
+                                {order.price}
+                            </StyledTableCell>
+
+                            <StyledTableCell align="left" >
+                                {order.orderStatus}
+                                <br />
+                                <Button className="btn-regular" sx={{ mt: 1 }}>Approve</Button>
+                            </StyledTableCell>
+
+                            <StyledTableCell align="left">
+                                <img height="60" width="60" src={order.imgURL} alt="" />
+                            </StyledTableCell>
+
                             <StyledTableCell align="left">
                                 <MdOutlineCancel onClick={() => handleDelete(order._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
                             </StyledTableCell>
