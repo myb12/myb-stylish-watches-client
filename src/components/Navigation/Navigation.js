@@ -70,6 +70,7 @@ const Navigation = () => {
                         <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
                             {user?.displayName}
                         </NavLink>
+
                         {
                             location.pathname === '/' ? <NavLink activeStyle={activeStyle} to="/" className="nav-item">
                                 Home
@@ -78,14 +79,8 @@ const Navigation = () => {
                                     Home
                                 </NavLink>
                         }
-                        <NavLink activeStyle={activeStyle} to="/purchase" className="nav-item">
-                            Purchase
-                        </NavLink>
                         <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
                             Dashboard
-                        </NavLink>
-                        <NavLink activeStyle={activeStyle} to="/contact-us" className="nav-item">
-                            Contact us
                         </NavLink>
 
                         {

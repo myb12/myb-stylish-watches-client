@@ -10,7 +10,6 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
-    const [token, setToken] = useState('');
     const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
@@ -74,11 +73,10 @@ const useFirebase = () => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-                // getIdToken(user)
-                //     .then(idToken => {
-                //         setToken(idToken);
-                //         sessionStorage.setItem('jwt', idToken);
-                //     })
+                getIdToken(user)
+                    .then(idToken => {
+                        sessionStorage.setItem('jwt', idToken);
+                    })
             } else {
                 setUser({})
             }
@@ -110,22 +108,22 @@ const useFirebase = () => {
             .then(data => { })
     }
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/users/${user.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setAdmin(data.admin))
-    // }, [user.email])
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     return {
         user,
         isLoading,
+        setIsLoading,
         authError,
         registerUser,
         signInWithGoogle,
         loginUser,
         logout,
         admin,
-        token,
     }
 }
 

@@ -6,6 +6,7 @@ import Purchase from './components/Purchase/Purchase';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -25,9 +26,9 @@ function App() {
             <Dashboard />
           </Route>
 
-          <Route path="/purchase/:productId">
+          <PrivateRoute path="/purchase/:productId">
             <Purchase />
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>

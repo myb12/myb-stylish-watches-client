@@ -1,11 +1,12 @@
 import React from 'react';
-import useAuth from '../../hooks/useAuth';
 import { Route, Redirect } from 'react-router-dom';
-import { Box } from '@mui/system';
 import { CircularProgress } from '@mui/material';
+import useAuth from '../../../../hooks/useAuth';
+import { Box } from '@mui/system';
 
-const PrivateRoute = ({ children, ...rest }) => {
-    const { user, isLoading } = useAuth();
+const AdminRoute = ({ children, ...rest }) => {
+    const { user, isLoading, admin } = useAuth();
+    console.log('from admin route', admin);
 
     if (isLoading) {
         return (
@@ -17,9 +18,9 @@ const PrivateRoute = ({ children, ...rest }) => {
     return (
         <Route
             {...rest}
-            render={({ location }) => user.email ? children : <Redirect
+            render={({ location }) => user.email && admin ? children : <Redirect
                 to={{
-                    pathname: "/login",
+                    pathname: "/home",
                     state: { from: location }
                 }}
             ></Redirect>}
@@ -29,4 +30,4 @@ const PrivateRoute = ({ children, ...rest }) => {
     );
 };
 
-export default PrivateRoute;
+export default AdminRoute;
