@@ -1,5 +1,5 @@
 import { Alert, Button, TextField, Typography } from '@mui/material';
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 
 const MakeAdmin = () => {
     const [success, setSuccess] = useState(false);
@@ -13,7 +13,7 @@ const MakeAdmin = () => {
         e.preventDefault();
 
         const user = { email }
-        fetch('http://secret-anchorage-33116.herokuapp.com/users/admin', {
+        fetch('https://secret-anchorage-33116.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`,

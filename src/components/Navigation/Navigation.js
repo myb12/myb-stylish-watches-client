@@ -20,12 +20,9 @@ const Navigation = () => {
     const [burgerItem, setBurgerItem] = useState(false);
     const location = useLocation();
     const history = useHistory();
-
     const { user, logout } = useAuth();
 
-
     const mobileDevice = useMediaQuery('(max-width:600px)');
-    // console.log(mobileDevice);
 
     const handleClick = () => {
         setBurgerItem(!burgerItem);
@@ -40,13 +37,6 @@ const Navigation = () => {
         logout();
         history.push('/');
     }
-
-    console.log(user);
-
-    // const handleChange = (event) => {
-    //   setAuth(event.target.checked);
-    //   console.log(event.target.checked);
-    // };
 
 
     return (

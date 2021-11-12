@@ -8,7 +8,7 @@ const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`http://secret-anchorage-33116.herokuapp.com/my-orders?email=${user.email}`, {
+        fetch(`https://secret-anchorage-33116.herokuapp.com/my-orders?email=${user.email}`, {
             method: 'POST',
         })
             .then(res => res.json())
@@ -19,7 +19,7 @@ const MyOrders = () => {
 
     const handleDelete = (id) => {
         if (window.confirm('Do you really want to delete the order?')) {
-            fetch(`http://secret-anchorage-33116.herokuapp.com/my-orders/${id}`, {
+            fetch(`https://secret-anchorage-33116.herokuapp.com/my-orders/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

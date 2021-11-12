@@ -27,7 +27,7 @@ const Review = () => {
         newReview.reviewer = user.displayName;
         newReview.rating = rating;
 
-        fetch('http://secret-anchorage-33116.herokuapp.com/reviews', {
+        fetch('https://secret-anchorage-33116.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

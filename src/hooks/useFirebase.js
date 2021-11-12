@@ -97,7 +97,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName }
-        fetch('http://secret-anchorage-33116.herokuapp.com/users', {
+        fetch('https://secret-anchorage-33116.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -109,7 +109,7 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
-        fetch(`http://secret-anchorage-33116.herokuapp.com/users/${user.email}`)
+        fetch(`https://secret-anchorage-33116.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin);

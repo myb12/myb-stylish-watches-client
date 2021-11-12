@@ -7,7 +7,7 @@ import { Box } from '@mui/system';
 const AdminRoute = ({ children, ...rest }) => {
     const { user, isLoading, admin } = useAuth();
 
-    if (isLoading) {
+    if (isLoading || !admin) {
         return (
             <Box style={{ display: 'flex', justifyContent: 'center' }}>
                 <CircularProgress style={{ color: '#c39052' }} />

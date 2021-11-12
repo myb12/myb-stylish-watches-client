@@ -21,7 +21,7 @@ const AddProduct = () => {
         const newProduct = { ...product }
         newProduct.rating = rating;
 
-        fetch('http://secret-anchorage-33116.herokuapp.com/product', {
+        fetch('https://secret-anchorage-33116.herokuapp.com/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ const AddProduct = () => {
             })
 
     }
-    
+
     return (
         <Container Container maxWidth="md" >
             <Typography variant="h4" className="title">Add a Product</Typography>

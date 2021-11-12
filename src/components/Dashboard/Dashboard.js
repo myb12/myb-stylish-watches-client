@@ -45,13 +45,13 @@ function Dashboard(props) {
 
 
     useEffect(() => {
-        fetch('http://secret-anchorage-33116.herokuapp.com/products')
+        fetch('https://secret-anchorage-33116.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setTotalProducts(data))
     }, [])
 
     useEffect(() => {
-        fetch('http://secret-anchorage-33116.herokuapp.com/orders')
+        fetch('https://secret-anchorage-33116.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setTotalOrders(data))
     }, [])

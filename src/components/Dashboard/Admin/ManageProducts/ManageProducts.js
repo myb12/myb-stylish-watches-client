@@ -9,14 +9,14 @@ const ManageProducts = () => {
     const history = useHistory()
 
     useEffect(() => {
-        fetch('http://secret-anchorage-33116.herokuapp.com/products')
+        fetch('https://secret-anchorage-33116.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
 
     const handleProductDelete = (id) => {
         if (window.confirm('Do you really want to delete the product?')) {
-            fetch(`http://secret-anchorage-33116.herokuapp.com/products/${id}`, {
+            fetch(`https://secret-anchorage-33116.herokuapp.com/products/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
