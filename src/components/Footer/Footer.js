@@ -3,56 +3,13 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import { Divider, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import { FaFacebookF, FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import logo from '../../images/myb.svg';
+import './Footer.css'
 
-const useStyles = makeStyles({
-    footerLink: {
-        color: "#000",
-        paddingTop: 5,
-        paddingBottom: 5,
-        "&:hover": {
-            color: "#c39052"
-        }
-    },
-    socialIcons: {
-        fontSize: 20,
-        padding: 10,
-        border: "1px solid",
-        borderRadius: 6,
-        transition: "all 0.3s ease-in-out"
-    },
-    facebookIcons: {
-        color: "#3C5A96",
-        "&:hover": {
-            color: "#fff",
-            backgroundColor: "#3C5A96"
-        }
-    },
-    twitterIcons: {
-        color: "#2AA3EF",
-        "&:hover": {
-            color: "#fff",
-            backgroundColor: "#2AA3EF"
-        }
-    },
-    linkedInIcons: {
-        color: "#1178B3",
-        "&:hover": {
-            color: "#fff",
-            backgroundColor: "#1178B3"
-        }
-    },
-    githubIcons: {
-        color: "#24292f",
-        "&:hover": {
-            color: "#fff",
-            backgroundColor: "#24292f"
-        }
-    }
-});
+
 const Footer = () => {
-    const classes = useStyles();
+
     return (
         <div style={{ marginTop: 100, }}>
             <Divider />
@@ -73,7 +30,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Pricing
                             </Typography>
                         </Link>
@@ -85,7 +42,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Award
                             </Typography>
                         </Link>
@@ -97,7 +54,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Services
                             </Typography>
                         </Link>
@@ -109,7 +66,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Testimonials
                             </Typography>
                         </Link>
@@ -130,7 +87,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Mission
                             </Typography>
                         </Link>
@@ -142,7 +99,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 About Us
                             </Typography>
                         </Link>
@@ -154,7 +111,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Why Choose Us
                             </Typography>
                         </Link>
@@ -166,7 +123,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Team
                             </Typography>
                         </Link>
@@ -187,7 +144,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Contacts
                             </Typography>
                         </Link>
@@ -199,7 +156,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Blog
                             </Typography>
                         </Link>
@@ -211,7 +168,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 F.A.Q
                             </Typography>
                         </Link>
@@ -223,7 +180,7 @@ const Footer = () => {
                                 textDecoration: "none"
                             }}
                         >
-                            <Typography variant="subtitle1" className={classes.footerLink}>
+                            <Typography variant="subtitle1" className="footer-link">
                                 Get a Quote
                             </Typography>
                         </Link>
@@ -231,7 +188,7 @@ const Footer = () => {
 
                     <Grid item xs={6} sm={6} md={6} lg={3}>
                         <Typography
-                            variant="h5"
+                            variant="h6"
                             style={{
                                 paddingTop: 5,
                                 paddingBottom: 5,
@@ -239,15 +196,14 @@ const Footer = () => {
                                 color: "#c39052"
                             }}
                         >
-                            Company Name
+                            MYB Watches
                         </Typography>
 
                         <Typography
                             variant="subtitle1"
                             style={{ paddingTop: 5, paddingBottom: 5 }}
                         >
-                            This is a demo text about the company. This text will be replaced
-                            by a short description aout the company and it's services.
+                            The MYB Watches is global. MYB provides easy, safe, and reliable market access to all watch enthusiasts.
                         </Typography>
                     </Grid>
                 </Grid>
@@ -259,18 +215,19 @@ const Footer = () => {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                justifyContent: "center"
+                                justifyContent: "center",
+                                marginBottom: 14
                             }}
                         >
                             <img
-                                src="https://myb-travel.web.app/static/media/myb.50bd4b73.svg"
+                                src={logo}
                                 width="50" alt=""
                             />
                             <Typography
                                 variant="h5"
                                 style={{ paddingLeft: 10, color: "#c39052" }}
                             >
-                                Company Name
+                                MYB Watches
                             </Typography>
                         </div>
                     </Grid>
@@ -292,16 +249,16 @@ const Footer = () => {
                             }}
                         >
                             <FaFacebookF
-                                className={`${classes.socialIcons} ${classes.facebookIcons}`}
+                                className="social-icons facebook-icons"
                             />
                             <FaTwitter
-                                className={`${classes.socialIcons} ${classes.twitterIcons}`}
+                                className="social-icons twitter-icons"
                             />
                             <FaLinkedinIn
-                                className={`${classes.socialIcons} ${classes.linkedInIcons}`}
+                                className="social-icons linkedIn-icons"
                             />
                             <FaGithub
-                                className={`${classes.socialIcons} ${classes.githubIcons}`}
+                                className="social-icons github-icons"
                             />
                         </Box>
                     </Grid>

@@ -79,8 +79,15 @@ const Navigation = () => {
                                     Home
                                 </NavLink>
                         }
-                        <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
-                            Dashboard
+
+                        {
+                            user.email && <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
+                                Dashboard
+                            </NavLink>
+                        }
+
+                        <NavLink activeStyle={activeStyle} to="/products" className="nav-item">
+                            All Products
                         </NavLink>
 
                         {
@@ -101,20 +108,40 @@ const Navigation = () => {
                     />
                 </Toolbar>
             </AppBar>
+
             <Box sx={{ bgcolor: '#04293a' }} className={burgerItem ? 'burger-menu-item burger-menu-visible' : 'burger-menu-item'}>
                 <FaWindowClose className="icon-close" onClick={handleClick} />
-                <NavLink activeStyle={activeStyle} to="/">
-                    Home
+                <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
+                    {user?.displayName}
                 </NavLink>
-                <NavLink activeStyle={activeStyle} to="/services">
-                    Services
+
+                {
+                    location.pathname === '/' ? <NavLink activeStyle={activeStyle} to="/" className="nav-item">
+                        Home
+                    </NavLink> :
+                        <NavLink activeStyle={activeStyle} to="/home" className="nav-item">
+                            Home
+                        </NavLink>
+                }
+
+                {
+                    user.email && <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
+                        Dashboard
+                    </NavLink>
+                }
+
+                <NavLink activeStyle={activeStyle} to="/products" className="nav-item">
+                    All Products
                 </NavLink>
-                <NavLink activeStyle={activeStyle} to="/about-us">
-                    About
-                </NavLink>
-                <NavLink activeStyle={activeStyle} to="/contact-us">
-                    Contact us
-                </NavLink>
+
+                {
+                    user.email ?
+                        <a href="/" onClick={handleLogOut} className="nav-item">Log out</a>
+                        :
+                        <NavLink onClick={handleScroll} activeStyle={activeStyle} to="/login" className="nav-item">
+                            Login
+                        </NavLink>
+                }
             </Box>
         </Box >
     );

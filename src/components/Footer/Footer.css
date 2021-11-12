@@ -1,0 +1,54 @@
+.footer-link {
+   color: #000;
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+.footer-link:hover {
+    color: #c39052;
+}
+
+.social-icons {
+   font-size: 20px;
+   padding: 10px;
+   border: 1px solid;
+   border-radius: 6px;
+   transition: all 0.3s ease-in-out;
+}
+.facebook-icons{
+    color: #3C5A96;
+}
+.facebook-icons:hover {
+    color: #fff;
+    background-color: #3C5A96;
+ }
+
+.twitter-icons {
+    color: #2AA3EF;
+}
+.twitter-icons:hover {
+    color: #fff;
+    background-color: #2AA3EF;
+}
+
+.linkedIn-icons {
+    color: #1178B3;
+}
+
+.linkedIn-iconshover {
+    color: #fff;
+    background-color: #1178B3;
+}
+
+.linkedIn-icons:hover {
+    color: #fff;
+    background-color: #1178B3;
+}
+
+.github-icons {
+    color: #24292f;
+}
+
+.github-icons:hover {
+    color:#fff;
+    background-color:#24292f;
+}

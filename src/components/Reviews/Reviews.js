@@ -1,6 +1,8 @@
 import { Container, Grid, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import ReviewCard from '../ReviewCard/ReviewCard';
+import './Reviews.css'
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -12,16 +14,17 @@ const Reviews = () => {
 
 
     return (
-        <Container style={{ marginTop: 100 }}>
-            <Typography variant="h4" className="title">Reviews</Typography>
+        <Box className="reviews-container">
+            <Container >
+                <Typography variant="h4" className="title">Reviews</Typography>
 
-            <Grid container spacing={2}>
-                {
-                    reviews?.map(review => <ReviewCard review={review} />)
-                }
-            </Grid>
-
-        </Container>
+                <Grid container spacing={2}>
+                    {
+                        reviews?.map(review => <ReviewCard review={review} />)
+                    }
+                </Grid>
+            </Container>
+        </Box>
     );
 };
 

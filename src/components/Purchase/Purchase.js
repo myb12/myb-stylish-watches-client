@@ -1,12 +1,11 @@
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Navigation from '../Navigation/Navigation';
 
 const Purchase = () => {
-    // const [loginData, setLoginData] = useState({});
     const { user } = useAuth();
     const [specificProduct, setSpecificProduct] = useState({});
     const history = useHistory();
@@ -18,10 +17,8 @@ const Purchase = () => {
             .then(data => {
                 setSpecificProduct(data);
             })
-    }, [])
+    }, [productId])
 
-
-    // const { user, registerUser, isLoading, authError } = useAuth();
 
     const handleOnChange = e => {
         const field = e.target.name;

@@ -42,8 +42,6 @@ const CardComponent = ({ product }) => {
                     </Typography>
                 </CardContent>
                 <CardActions sx={{ p: 0 }}>
-                    {/* <Button size="small" sx={{ color: '#03a84e' }}>Share</Button>
-                    <Button size="small" sx={{ color: '#03a84e' }}> Learn More</Button> */}
                     <Grid container>
                         <Grid item xs={12} md={6} sx={{ backgroundColor: '#04293a' }}>
                             <Button

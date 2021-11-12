@@ -1,11 +1,12 @@
 import { Button, Card, CardActions, CardContent, Divider, Grid, Rating, Typography } from '@mui/material';
 import React from 'react';
-import './ReviewCard.css'
+import './ReviewCard.css';
+import { BsArrowRight } from 'react-icons/bs';
 
 const ReviewCard = ({ review }) => {
 
     return (
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} className="review-card-container">
             <Card style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <CardContent>
                     <Typography variant="h5" component="div">
@@ -17,8 +18,9 @@ const ReviewCard = ({ review }) => {
                         {review.review}
                     </Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions style={{display:'flex', justifyContent:'space-between'}}>
                     <Button size="small" sx={{ color: '#c39052' }}>Learn More</Button>
+                    <BsArrowRight style={{marginRight:15}}/>
                 </CardActions>
             </Card>
         </Grid>

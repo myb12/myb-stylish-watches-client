@@ -6,7 +6,6 @@ import { Box } from '@mui/system';
 
 const AdminRoute = ({ children, ...rest }) => {
     const { user, isLoading, admin } = useAuth();
-    console.log('from admin route', admin);
 
     if (isLoading) {
         return (

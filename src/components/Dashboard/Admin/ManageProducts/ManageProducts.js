@@ -15,7 +15,7 @@ const ManageProducts = () => {
     }, [])
 
     const handleProductDelete = (id) => {
-        if (window.confirm('Do you really want to delete the order?')) {
+        if (window.confirm('Do you really want to delete the product?')) {
             fetch(`http://secret-anchorage-33116.herokuapp.com/products/${id}`, {
                 method: 'DELETE',
             })

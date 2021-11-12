@@ -15,7 +15,7 @@ const MyOrders = () => {
             .then(data => {
                 setMyOrders(data);
             })
-    }, []);
+    }, [user.email]);
 
     const handleDelete = (id) => {
         if (window.confirm('Do you really want to delete the order?')) {

@@ -1,8 +1,7 @@
 import {
+    Alert,
     Button,
-    Divider,
     Grid,
-    IconButton,
     InputAdornment,
     TextField,
     Typography
@@ -16,10 +15,11 @@ import useAuth from "../../hooks/useAuth";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Box } from "@mui/system";
 
-export default function App() {
+export default function Login() {
 
-    const { user, loginUser, signInWithGoogle, isLoading, authError } = useAuth();
+    const { loginUser, signInWithGoogle, authError } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
@@ -43,9 +43,9 @@ export default function App() {
         signInWithGoogle(location, history);
     }
     return (
-        <>
+        <Box style={{ marginTop: 100, marginBottom: 20 }}>
             <Navigation />
-            <div className="App">
+            <div className="login-container">
                 <Grid container className="login-box">
                     <Grid item sm={12} md={3}></Grid>
                     <Grid sm={12} md={6} className="form-box">
@@ -56,6 +56,8 @@ export default function App() {
 
                         <form onSubmit={handleSignIn}>
                             <TextField
+                                required
+                                type="email"
                                 onBlur={handleEmailChange}
                                 className="inputFields"
                                 label="Email address"
@@ -71,6 +73,8 @@ export default function App() {
                                 sx={{ mt: 2 }}
                             />
                             <TextField
+                                required
+                                type="password"
                                 onBlur={handlePasswordChange}
                                 className="inputFields"
                                 label="Password"
@@ -100,18 +104,16 @@ export default function App() {
                             <div className="or-divider" />
                         </div>
                         <Button onClick={handleGoogleSignIn} variant="outlined" className="continue-with-button">
-                            Continue with &nbsp; &nbsp; <FcGoogle />
+                            Continue with <FcGoogle style={{ marginLeft: 5 }} />
                         </Button>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                            <path
-                                fill="#c39052"
-                                fill-opacity="0.3"
-                                d="M0,128L60,154.7C120,181,240,235,360,245.3C480,256,600,224,720,197.3C840,171,960,149,1080,144C1200,139,1320,149,1380,154.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-                            ></path>
-                        </svg>
+                        {
+                            authError && <Alert severity="error" sx={{ mt: 2 }}>{authError}</Alert>
+                        }
+
                     </Grid>
                     <Grid item sm={12} md={3}></Grid>
                 </Grid>
-            </div></>
+            </div>
+        </Box>
     );
 }

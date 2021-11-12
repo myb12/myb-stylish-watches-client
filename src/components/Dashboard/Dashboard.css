@@ -1,4 +1,3 @@
-
 .dashboard-item{
     font-size: 16px;
     font-weight: 700;
@@ -21,4 +20,15 @@
     transition: all 0.3s ease;
     position:relative;
     margin-left: auto;
+}
+
+.dashboard-content .MuiCard-root{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color:#04293a !important;
+    padding:30px;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    background-color: #c39052;
 }

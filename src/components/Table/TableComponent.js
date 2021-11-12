@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { MdOutlineCancel } from 'react-icons/md';
 import { Button } from '@mui/material';
+import { Box } from '@mui/system';
 
 
 
@@ -102,8 +103,6 @@ const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, a
 
                             <StyledTableCell align="left" >
                                 {order.orderStatus}
-                                <br />
-                                <Button onClick={() => handleShip(order._id)} disabled={order.orderStatus === 'Shipped'} className="btn-regular" sx={{ mt: 1, fontSize: 12 }}>Ship</Button>
                             </StyledTableCell>
 
                             <StyledTableCell align="left">
@@ -111,7 +110,10 @@ const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, a
                             </StyledTableCell>
 
                             <StyledTableCell align="left">
-                                <MdOutlineCancel onClick={() => handleDelete(order._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
+                                <Box style={{ display: 'flex' }}>
+                                    <Button onClick={() => handleShip(order._id)} disabled={order.orderStatus === 'Shipped'} className="btn-regular" sx={{ mr: 1, fontSize: 12 }}>Ship</Button>
+                                    <MdOutlineCancel onClick={() => handleDelete(order._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
+                                </Box>
                             </StyledTableCell>
 
                         </StyledTableRow>

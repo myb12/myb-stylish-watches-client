@@ -1,23 +1,16 @@
 import { Alert, Button, TextField, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import useAuth from '../../../../hooks/useAuth';
+import React, {useState } from 'react';
 
 const MakeAdmin = () => {
-    const { setIsLoading } = useAuth();
     const [success, setSuccess] = useState(false);
     const [email, setEmail] = useState('');
     const token = sessionStorage.getItem('jwt');
-
-    // useEffect(() => {
-    //     setIsLoading(false);
-    // }, [])
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
     const handleSubmit = e => {
         e.preventDefault();
-
 
         const user = { email }
         fetch('http://secret-anchorage-33116.herokuapp.com/users/admin', {
@@ -31,9 +24,7 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-
                     setSuccess(true);
-                    console.log(success);
                 } else {
                     setSuccess(false);
                 }

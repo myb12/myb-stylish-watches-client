@@ -1,8 +1,7 @@
 import {
+    Alert,
     Button,
-    Divider,
     Grid,
-    IconButton,
     InputAdornment,
     TextField,
     Typography
@@ -12,15 +11,16 @@ import { MdEmail } from "react-icons/md";
 import { FaLock, FaUserAlt } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import Navigation from '../Navigation/Navigation';
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth'
+import { Box } from "@mui/system";
+import { Link } from "react-router-dom";
 
 export default function Register() {
 
-    const { user, registerUser, isLoading, authError } = useAuth();
+    const { registerUser, authError } = useAuth();
     const history = useHistory();
-    const location = useLocation();
     const [loginData, setLoginData] = useState({});
 
     const handleOnBlur = e => {
@@ -31,28 +31,29 @@ export default function Register() {
         console.log(newLoginData);
         setLoginData(newLoginData);
     }
-    
+
     const handleSignUp = (e) => {
         e.preventDefault();
-        
+
         registerUser(loginData.email, loginData.password, loginData.name, history);
     }
 
 
     return (
-        <>
+        <Box style={{ marginTop: 100 }}>
             <Navigation />
             <div className="App">
                 <Grid container className="login-box">
                     <Grid item sm={12} md={3}></Grid>
                     <Grid sm={12} md={6} className="form-box">
                         <Typography variant="h4" className="heading">
-                            Login
+                            Please Register
                         </Typography>
                         <div className="divider" />
 
                         <form onSubmit={handleSignUp}>
                             <TextField
+                                required
                                 className="inputFields"
                                 label="Name"
                                 name="name"
@@ -70,6 +71,7 @@ export default function Register() {
                             />
 
                             <TextField
+                                required
                                 className="inputFields"
                                 label="Email address"
                                 name="email"
@@ -87,10 +89,11 @@ export default function Register() {
                                 onBlur={handleOnBlur}
                             />
                             <TextField
+                                required
+                                type="password"
                                 className="inputFields"
                                 label="Password"
                                 variant="standard"
-                                type="password"
                                 name="password"
                                 InputProps={{
                                     // <-- This is where the toggle button is added.
@@ -104,11 +107,11 @@ export default function Register() {
                                 onBlur={handleOnBlur}
                             />
                             <Button type="submit" variant="contained" className="inputFields" sx={{ mt: 2 }}>
-                                Login
+                                Sign up
                             </Button>
                         </form>
-                        <Typography variant="body1">
-                            Don't have an account? <a href="#">Register</a> here
+                        <Typography variant="body1" sx={{ mt: 2 }}>
+                            Already registered? <Link to="/login">Login</Link> here
                         </Typography>
                         <div className="or-section">
                             <div className="or-divider" />
@@ -116,18 +119,14 @@ export default function Register() {
                             <div className="or-divider" />
                         </div>
                         <Button variant="outlined" className="continue-with-button">
-                            Continue with &nbsp; &nbsp; <FcGoogle />
+                            Continue with<FcGoogle style={{ marginLeft: 5 }} />
                         </Button>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                            <path
-                                fill="#c39052"
-                                fill-opacity="0.3"
-                                d="M0,128L60,154.7C120,181,240,235,360,245.3C480,256,600,224,720,197.3C840,171,960,149,1080,144C1200,139,1320,149,1380,154.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-                            ></path>
-                        </svg>
+                        {
+                            authError && <Alert severity="error" sx={{ mt: 2 }}>{authError}</Alert>
+                        }
                     </Grid>
                     <Grid item sm={12} md={3}></Grid>
                 </Grid>
-            </div></>
+            </div></Box>
     );
 }

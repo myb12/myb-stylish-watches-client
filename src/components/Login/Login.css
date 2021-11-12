@@ -1,15 +1,11 @@
-.App {
+.login-container {
   font-family: sans-serif;
   text-align: center;
-  height: 100vh;
-}
-.login-box {
-  height: 100vh;
 }
 .form-box {
-  box-shadow: 0px 4px 30px rgba(204, 204, 204, 0.25);
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
   margin: auto;
-  padding: 5%;
+  padding: 3%;
   border-radius: 10px;
 }
 .heading {
@@ -48,5 +44,5 @@
 }
 .continue-with-button {
   margin: 10px 0;
-  width: 50%;
+ 
 }

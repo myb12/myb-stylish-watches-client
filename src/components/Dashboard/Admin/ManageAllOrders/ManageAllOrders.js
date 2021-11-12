@@ -5,6 +5,7 @@ import TableComponent from '../../../Table/TableComponent';
 const ManageAllOrders = () => {
     const [allOrders, setAllOrders] = useState();
     const [isShipped, setIsShipped] = useState(false);
+    
     useEffect(() => {
         fetch('http://secret-anchorage-33116.herokuapp.com/orders')
             .then(res => res.json())

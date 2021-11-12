@@ -9,7 +9,7 @@ import List from '@mui/material/List';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import { Button, Card, CardContent, Container, Grid } from '@mui/material';
 import { Switch, Route, Link, useRouteMatch, useHistory, useLocation } from "react-router-dom";
 import { MdDashboardCustomize, MdManageAccounts, MdPayment, MdReviews } from 'react-icons/md';
 import { useEffect, useState } from 'react';
@@ -22,21 +22,39 @@ import AddProduct from './Admin/AddProduct/AddProduct';
 import MakeAdmin from './Admin/MakeAdmin/MakeAdmin';
 import ManageProducts from './Admin/ManageProducts/ManageProducts';
 import { AiFillSetting, AiOutlineRollback } from 'react-icons/ai';
-import { GoDiffAdded } from 'react-icons/go';
+import { GoDiffAdded, GoWatch } from 'react-icons/go';
 import useAuth from '../../hooks/useAuth';
 import AdminRoute from './Admin/AdminRoute/AdminRoute';
+import Pay from './User/Pay/Pay';
 
-const drawerWidth = 260;
+const drawerWidth = 280;
 
 function Dashboard(props) {
-    const { logout, admin } = useAuth()
+    const { logout, admin, user } = useAuth()
     const { window } = props;
     const history = useHistory();
     const location = useLocation();
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [totalOrders, setTotalOrders] = useState([]);
+    const [totalProducts, setTotalProducts] = useState([]);
 
     let { path, url } = useRouteMatch();
     const dashboardPageUrl = location.pathname.split('/dashboard/')[1];
+    const notDashboardUrl = location.pathname.split('/')[2];
+    console.log(notDashboardUrl);
+
+
+    useEffect(() => {
+        fetch('http://secret-anchorage-33116.herokuapp.com/products')
+            .then(res => res.json())
+            .then(data => setTotalProducts(data))
+    }, [])
+
+    useEffect(() => {
+        fetch('http://secret-anchorage-33116.herokuapp.com/orders')
+            .then(res => res.json())
+            .then(data => setTotalOrders(data))
+    }, [])
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -51,7 +69,6 @@ function Dashboard(props) {
 
     const drawer = (
         <div>
-            {/* <Toolbar /> */}
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
                     <Link to="/" className="dashboard-item">
@@ -67,7 +84,7 @@ function Dashboard(props) {
 
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to="/home" className="dashboard-item" style={{ borderLeft: !dashboardPageUrl && '2px solid #04293a' }}>
+                    <Link to="/dashboard" className="dashboard-item" style={{ borderLeft: !dashboardPageUrl && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
                             <MdDashboardCustomize style={{ marginRight: 10, }} />
                             Dashboard
@@ -77,7 +94,7 @@ function Dashboard(props) {
             </List>
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to="/home" className="dashboard-item">
+                    <Link to={`${url}/pay`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'pay' && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
                             <MdPayment style={{ marginRight: 10, }} />
                             Pay
@@ -154,7 +171,6 @@ function Dashboard(props) {
                 </>
             }
 
-
         </div >
     );
 
@@ -225,6 +241,9 @@ function Dashboard(props) {
                 <Toolbar />
                 <Switch>
                     {/* Routes for normal user */}
+                    <Route path={`${path}/pay`}>
+                        <Pay />
+                    </Route>
                     <Route path={`${path}/myOrders`}>
                         <MyOrders />
                     </Route>
@@ -246,17 +265,53 @@ function Dashboard(props) {
                     </AdminRoute>
                 </Switch>
 
-                {/* <Switch>
-                    <Route exact path={path}>
-                        <DashboardHome />
-                    </Route>
-                    <AdminRoute path={`${path}/makeAdmin`}>
-                        <MakeAdmin />
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/addDoctor`}>
-                        <AddDoctor />
-                    </AdminRoute>
-                </Switch> */}
+
+                {
+                    !notDashboardUrl && <>
+                        <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                            <Box>
+                                <Typography variant="h5">Hello <span style={{ fontWeight: 700, color: '#c39052' }}>{user.displayName}!</span></Typography>
+                                <Typography variant="h6" style={{ textAlign: 'center' }}>Welcome to the Dashboard.</Typography>
+                            </Box>
+                        </Box>
+
+                        <Container maxWidth="md" sx={{ mt: 2 }} className="dashboard-content">
+                            <Grid container spacing={2}>
+                                <Grid item md={6} xs={12}>
+                                    <Card variant="outlined" style={{ height: 250 }}>
+                                        <CardContent>
+                                            <Typography style={{ fontSize: 45, fontWeight: 700 }} component="div">
+                                                {totalProducts.length}
+                                            </Typography>
+                                            <Typography variant="h6" sx={{ mb: 1.5 }} >
+                                                Total Products
+                                            </Typography>
+
+                                        </CardContent>
+                                        <GoWatch style={{ fontSize: 100, color: '#00000026' }} />
+                                    </Card>
+                                </Grid>
+
+                                <Grid item md={6} xs={12}>
+                                    <Card variant="outlined" style={{ height: 250 }}>
+                                        <CardContent>
+                                            <Typography style={{ fontSize: 45, fontWeight: 700 }} component="div">
+                                                {totalOrders.length}
+                                            </Typography>
+                                            <Typography variant="h6" sx={{ mb: 1.5 }}>
+                                                Total Orders
+                                            </Typography>
+
+                                        </CardContent>
+                                        <BsMinecartLoaded style={{ fontSize: 100, color: '#00000026' }} />
+                                    </Card>
+                                </Grid>
+
+                            </Grid>
+                        </Container>
+                    </>
+                }
+
             </Box>
         </Box>
     );
