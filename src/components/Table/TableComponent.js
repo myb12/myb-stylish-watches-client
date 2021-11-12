@@ -33,7 +33,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, allOrders }) => {
+const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, allOrders, products, handleProductDelete, handleShip }) => {
+
     return (
         <TableContainer component={Paper} sx={{ maxWidth: '90vw' }}>
             <Table aria-label="customized table">
@@ -54,26 +55,33 @@ const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, a
                     </TableRow>
                 </TableHead>
                 <TableBody>
+                    {/* table data for my orders  */}
                     {myOrders?.map((order) => (
                         <StyledTableRow key={order._id}>
                             <StyledTableCell component="th" scope="row">
                                 {order.title}
                             </StyledTableCell>
-                            <StyledTableCell align="left">{order.price}</StyledTableCell>
+
+                            <StyledTableCell align="left">
+                                {order.price}
+                            </StyledTableCell>
+
                             <StyledTableCell align="left" >
                                 {order.orderStatus}
                             </StyledTableCell>
 
                             <StyledTableCell align="left">
-
                                 <img height="60" width="60" src={order.imgURL} alt="" />
                             </StyledTableCell>
+
                             <StyledTableCell align="left">
                                 <MdOutlineCancel onClick={() => handleDelete(order._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
                             </StyledTableCell>
 
                         </StyledTableRow>
                     ))}
+
+                    {/* table data for all orders  */}
                     {allOrders?.map((order) => (
                         <StyledTableRow key={order._id}>
                             <StyledTableCell component="th" scope="row">
@@ -95,7 +103,7 @@ const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, a
                             <StyledTableCell align="left" >
                                 {order.orderStatus}
                                 <br />
-                                <Button className="btn-regular" sx={{ mt: 1 }}>Approve</Button>
+                                <Button onClick={() => handleShip(order._id)} disabled={order.orderStatus === 'Shipped'} className="btn-regular" sx={{ mt: 1, fontSize: 12 }}>Ship</Button>
                             </StyledTableCell>
 
                             <StyledTableCell align="left">
@@ -104,6 +112,28 @@ const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, a
 
                             <StyledTableCell align="left">
                                 <MdOutlineCancel onClick={() => handleDelete(order._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
+                            </StyledTableCell>
+
+                        </StyledTableRow>
+                    ))}
+
+                    {/* table data for all products  */}
+                    {products?.map((product) => (
+                        <StyledTableRow key={product._id}>
+                            <StyledTableCell component="th" scope="row">
+                                {product.title}
+                            </StyledTableCell>
+
+                            <StyledTableCell align="left" >
+                                {product.price}
+                            </StyledTableCell>
+
+                            <StyledTableCell align="left">
+                                <img height="60" width="60" src={product.imgURL} alt="" />
+                            </StyledTableCell>
+
+                            <StyledTableCell align="left">
+                                <MdOutlineCancel onClick={() => handleProductDelete(product._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
                             </StyledTableCell>
 
                         </StyledTableRow>

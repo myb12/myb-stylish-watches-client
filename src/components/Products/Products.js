@@ -8,9 +8,12 @@ const Products = () => {
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => {
+                const numData = data.slice(0,6);
+                setProducts(numData)
+            })
     }, [])
-    console.log(products);
+
     return (
         <Container style={{ marginTop: 100 }}>
             <Typography variant="h4" className="title">Some of Our Products</Typography>

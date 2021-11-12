@@ -4,16 +4,31 @@ import TableComponent from '../../../Table/TableComponent';
 
 const ManageAllOrders = () => {
     const [allOrders, setAllOrders] = useState();
+    const [isShipped, setIsShipped] = useState(false);
     useEffect(() => {
         fetch('http://localhost:5000/orders')
             .then(res => res.json())
             .then(data => setAllOrders(data))
-    }, [])
-    console.log(allOrders);
+    }, [isShipped])
+
+    const handleShip = (id) => {
+        fetch(`http://localhost:5000/orders/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.matchedCount > 0) {
+                    setIsShipped(!isShipped);
+                }
+            })
+    }
     return (
         <div>
             <Typography variant="h4" className="title">Manage All Orders</Typography>
-            <TableComponent forAdmin allOrders={allOrders} />
+            <TableComponent forAdmin allOrders={allOrders} handleShip={handleShip} />
         </div>
     );
 };

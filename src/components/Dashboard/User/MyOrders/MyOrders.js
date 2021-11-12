@@ -32,7 +32,6 @@ const MyOrders = () => {
         }
     }
 
-    console.log(myOrders);
     return (
         <div>
             <Typography variant="h4" className="title">My Orders</Typography>
