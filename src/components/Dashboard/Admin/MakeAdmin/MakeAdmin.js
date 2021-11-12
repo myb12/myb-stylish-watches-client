@@ -20,7 +20,7 @@ const MakeAdmin = () => {
 
 
         const user = { email }
-        fetch('http://localhost:5000/users/admin', {
+        fetch('http://secret-anchorage-33116.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -54,7 +54,7 @@ const MakeAdmin = () => {
                 <br />
                 <Button type="submit" sx={{ mt: 1 }} className="btn-regular">Make Admin</Button>
             </form>
-            {success && <Alert severity="success" sx={{mt:2}}>Admin made successfully!</Alert>}
+            {success && <Alert severity="success" sx={{ mt: 2 }}>Admin made successfully!</Alert>}
         </div >
     );
 };

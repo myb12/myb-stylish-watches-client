@@ -6,10 +6,10 @@ import './Products.css'
 const Products = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('http://secret-anchorage-33116.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
-                const numData = data.slice(0,6);
+                const numData = data.slice(0, 6);
                 setProducts(numData)
             })
     }, [])

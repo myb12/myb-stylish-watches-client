@@ -6,13 +6,13 @@ const ManageAllOrders = () => {
     const [allOrders, setAllOrders] = useState();
     const [isShipped, setIsShipped] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('http://secret-anchorage-33116.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setAllOrders(data))
     }, [isShipped])
 
     const handleShip = (id) => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`http://secret-anchorage-33116.herokuapp.com/orders/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

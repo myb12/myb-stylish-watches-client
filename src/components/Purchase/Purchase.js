@@ -13,7 +13,7 @@ const Purchase = () => {
     const { productId } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${productId}`)
+        fetch(`http://secret-anchorage-33116.herokuapp.com/product/${productId}`)
             .then(res => res.json())
             .then(data => {
                 setSpecificProduct(data);
@@ -41,7 +41,7 @@ const Purchase = () => {
         delete specificProduct._id;
         delete specificProduct.description;
 
-        fetch('http://localhost:5000/orders', {
+        fetch('http://secret-anchorage-33116.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

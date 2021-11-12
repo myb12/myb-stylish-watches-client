@@ -29,7 +29,7 @@ const AddProduct = () => {
         e.preventDefault();
 
         console.log(product);
-        fetch('http://localhost:5000/product', {
+        fetch('http://secret-anchorage-33116.herokuapp.com/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

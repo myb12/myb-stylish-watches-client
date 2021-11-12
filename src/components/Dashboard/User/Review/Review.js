@@ -25,7 +25,7 @@ const Review = () => {
         e.preventDefault();
 
         review.reviewer = user.displayName;
-        fetch('http://localhost:5000/reviews', {
+        fetch('http://secret-anchorage-33116.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
