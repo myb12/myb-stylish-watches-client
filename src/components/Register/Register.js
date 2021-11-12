@@ -18,7 +18,7 @@ import useAuth from '../../hooks/useAuth'
 
 export default function Register() {
 
-    const { signInUsingGoogle, setIsLoading, setName, setEmail, email, password, setPassword, setUserName, setError, registerNewUser, user } = useAuth();
+    const { user, registerUser, isLoading, authError } = useAuth();
     const history = useHistory();
     const location = useLocation();
     const [loginData, setLoginData] = useState({});
@@ -30,32 +30,12 @@ export default function Register() {
         newLoginData[field] = value;
         console.log(newLoginData);
         setLoginData(newLoginData);
-        setName(loginData.name);
     }
-    // const handleLoginSubmit = e => {
-    //     // if (loginData.password !== loginData.password2) {
-    //     //     alert('Your password did not match');
-    //     //     return
-    //     // }
-    //     // registerUser(loginData.email, loginData.password, loginData.name, history);
-    //     e.preventDefault();
-    //     console.log(loginData);
-    // }
+    
     const handleSignUp = (e) => {
         e.preventDefault();
-        registerNewUser(loginData.email, loginData.password)
-            .then(({ user }) => {
-                setUserName();
-                history.push(location.state?.from || '/');
-                setError('');
-                window.scrollTo(0, 0);
-                //=====this will reload page to show newly registered  user's information=====//
-                window.location.reload();
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-        // console.log(user);
+        
+        registerUser(loginData.email, loginData.password, loginData.name, history);
     }
 
 

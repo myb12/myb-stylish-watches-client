@@ -21,7 +21,7 @@ const Navigation = () => {
     const location = useLocation();
     const history = useHistory();
 
-    const { user, logOut } = useAuth();
+    const { user, logout } = useAuth();
 
 
     const mobileDevice = useMediaQuery('(max-width:600px)');
@@ -37,7 +37,7 @@ const Navigation = () => {
 
     const handleLogOut = (e) => {
         e.preventDefault();
-        logOut();
+        logout();
         history.push('/');
     }
 
@@ -67,7 +67,7 @@ const Navigation = () => {
                         <small className={mobileDevice ? 'display-none' : ''} style={{ color: '#c39052' }}>Stylish Watch</small>
                     </Typography>
                     <Box className={mobileDevice ? 'display-none' : 'nav topBotomBordersOut'}>
-                        <NavLink activeStyle={activeStyle} to="/contact-us" className="nav-item">
+                        <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
                             {user?.displayName}
                         </NavLink>
                         {

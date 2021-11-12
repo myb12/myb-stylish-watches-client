@@ -15,10 +15,13 @@ import Navigation from '../Navigation/Navigation';
 import useAuth from "../../hooks/useAuth";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function App() {
 
-    const { setIsLoading, setEmail, email, password, setPassword, error, setError, loginWithEmailAndPassword, signInUsingGoogle } = useAuth();
+    const { user, loginUser, signInWithGoogle, isLoading, authError } = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const history = useHistory();
     const location = useLocation();
 
@@ -33,29 +36,11 @@ export default function App() {
 
     const handleSignIn = (e) => {
         e.preventDefault();
-        loginWithEmailAndPassword(email, password)
-            .then(({ user }) => {
-                history.push(location.state?.from || '/');
-                setError('');
-                window.scrollTo(0, 0);
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-
+        loginUser(email, password, location, history)
     }
 
     const handleGoogleSignIn = () => {
-        signInUsingGoogle()
-            .then(({ user }) => {
-                history.push(location.state?.from || '/');
-                setError('');
-                window.scrollTo(0, 0);
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-            .finally(() => setIsLoading(false))
+        signInWithGoogle(location, history);
     }
     return (
         <>
