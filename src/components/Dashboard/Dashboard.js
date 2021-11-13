@@ -42,8 +42,6 @@ function Dashboard(props) {
     let { path, url } = useRouteMatch();
     const dashboardPageUrl = location.pathname.split('/dashboard/')[1];
     const notDashboardUrl = location.pathname.split('/')[2];
-    console.log(notDashboardUrl);
-
 
     useEffect(() => {
         fetch('https://secret-anchorage-33116.herokuapp.com/products')
@@ -201,14 +199,14 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    
-                        <Avatar
-                            alt="Remy Sharp"
-                            src={logo}
-                            sx={{ width: 60, height: 60, p: 1 }}
-                            style={{ cursor: 'pointer' }}
-                            onClick={handleLogoClick}
-                        />
+
+                    <Avatar
+                        alt="Remy Sharp"
+                        src={logo}
+                        sx={{ width: 60, height: 60, p: 1 }}
+                        style={{ cursor: 'pointer' }}
+                        onClick={handleLogoClick}
+                    />
 
                     <a href="/" onClick={handleLogOut} className="dashboard-nav-item">Log out</a>
                 </Toolbar>

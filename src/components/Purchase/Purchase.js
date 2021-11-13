@@ -26,7 +26,6 @@ const Purchase = () => {
         const newProduct = { ...specificProduct };
         newProduct[field] = value;
         setSpecificProduct(newProduct);
-        // console.log(specificProduct);
     }
 
     const handleSubmit = (e) => {
