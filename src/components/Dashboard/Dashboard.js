@@ -85,51 +85,10 @@ function Dashboard(props) {
 
             <Divider />
 
-            <List style={{ padding: "0" }}>
-                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to="/dashboard" className="dashboard-item" style={{ width: "100%", borderLeft: !dashboardPageUrl && '2px solid #04293a' }}>
-                        <span className="dashboard-item-content">
-                            <MdDashboardCustomize style={{ marginRight: 10, }} />
-                            Dashboard
-                        </span>
-                    </Link>
-                </Button>
-            </List>
-            <List style={{ padding: "0" }}>
-                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to={`${url}/pay`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'pay' && '2px solid #04293a' }}>
-                        <span className="dashboard-item-content">
-                            <MdPayment style={{ marginRight: 10, }} />
-                            Pay
-                        </span>
-                    </Link>
-                </Button>
-            </List>
-            <List style={{ padding: "0" }}>
-                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to={`${url}/myOrders`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'myOrders' && '2px solid #04293a' }}>
-                        <span className="dashboard-item-content">
-                            <BsMinecartLoaded style={{ marginRight: 10, }} />
-                            My order
-                        </span>
-                    </Link>
-                </Button>
-            </List>
-            <List style={{ padding: "0" }}>
-                <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to={`${url}/review`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'review' && '2px solid #04293a' }}>
-                        <span className="dashboard-item-content">
-                            <MdReviews style={{ marginRight: 10, }} />
-                            Review
-                        </span>
-                    </Link>
-                </Button>
-            </List>
 
 
             {
-                admin && <>
-                    <Divider />
+                admin ? <>
                     <List style={{ padding: "0" }}>
                         <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
                             <Link to={`${url}/manageAllOrders`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'manageAllOrders' && '2px solid #04293a' }}>
@@ -171,7 +130,49 @@ function Dashboard(props) {
                             </Link>
                         </Button>
                     </List>
-                </>
+                </> :
+                    <>
+                        <List style={{ padding: "0" }}>
+                            <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                                <Link to="/dashboard" className="dashboard-item" style={{ width: "100%", borderLeft: !dashboardPageUrl && '2px solid #04293a' }}>
+                                    <span className="dashboard-item-content">
+                                        <MdDashboardCustomize style={{ marginRight: 10, }} />
+                                        Dashboard
+                                    </span>
+                                </Link>
+                            </Button>
+                        </List>
+                        <List style={{ padding: "0" }}>
+                            <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                                <Link to={`${url}/pay`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'pay' && '2px solid #04293a' }}>
+                                    <span className="dashboard-item-content">
+                                        <MdPayment style={{ marginRight: 10, }} />
+                                        Pay
+                                    </span>
+                                </Link>
+                            </Button>
+                        </List>
+                        <List style={{ padding: "0" }}>
+                            <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                                <Link to={`${url}/myOrders`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'myOrders' && '2px solid #04293a' }}>
+                                    <span className="dashboard-item-content">
+                                        <BsMinecartLoaded style={{ marginRight: 10, }} />
+                                        My order
+                                    </span>
+                                </Link>
+                            </Button>
+                        </List>
+                        <List style={{ padding: "0" }}>
+                            <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
+                                <Link to={`${url}/review`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'review' && '2px solid #04293a' }}>
+                                    <span className="dashboard-item-content">
+                                        <MdReviews style={{ marginRight: 10, }} />
+                                        Review
+                                    </span>
+                                </Link>
+                            </Button>
+                        </List>
+                    </>
             }
 
         </div >
