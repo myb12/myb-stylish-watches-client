@@ -13,7 +13,6 @@ import { Avatar, Button, Card, CardContent, Container, Grid } from '@mui/materia
 import { Switch, Route, Link, useRouteMatch, useHistory, useLocation } from "react-router-dom";
 import { MdDashboardCustomize, MdManageAccounts, MdPayment, MdReviews } from 'react-icons/md';
 import { useEffect, useState } from 'react';
-import './Dashboard.css'
 import { BsMinecartLoaded } from 'react-icons/bs';
 import MyOrders from './User/MyOrders/MyOrders';
 import Review from './User/Review/Review';
@@ -26,7 +25,8 @@ import { GoDiffAdded, GoWatch } from 'react-icons/go';
 import useAuth from '../../hooks/useAuth';
 import AdminRoute from './Admin/AdminRoute/AdminRoute';
 import Pay from './User/Pay/Pay';
-import logo from '../../images/myb.svg'
+import logo from '../../images/myb.svg';
+import './Dashboard.css';
 
 const drawerWidth = 280;
 
