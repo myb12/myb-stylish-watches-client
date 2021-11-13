@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { CircularProgress, Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import ReviewCard from '../ReviewCard/ReviewCard';
@@ -20,7 +20,10 @@ const Reviews = () => {
 
                 <Grid container spacing={2}>
                     {
-                        reviews?.map(review => <ReviewCard review={review} />)
+                        !reviews.length ? <Box style={{ display: 'flex', justifyContent: 'center', marginTop: 50, width: '100%' }}>
+                            <CircularProgress style={{ color: '#c39052' }} />
+                        </Box> :
+                            reviews?.map(review => <ReviewCard key={review._id} review={review} />)
                     }
                 </Grid>
             </Container>

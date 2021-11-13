@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import { Divider, Typography } from "@mui/material";
-import { FaFacebookF, FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube } from "react-icons/fa";
 import logo from '../../images/myb.svg';
 import './Footer.css'
 
@@ -23,7 +23,7 @@ const Footer = () => {
                             Services
                         </Typography>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -35,7 +35,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -47,7 +47,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -59,7 +59,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -80,7 +80,7 @@ const Footer = () => {
                             Company
                         </Typography>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -92,7 +92,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -104,7 +104,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -116,7 +116,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -137,7 +137,7 @@ const Footer = () => {
                             Resources
                         </Typography>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -149,7 +149,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -161,7 +161,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -173,7 +173,7 @@ const Footer = () => {
                             </Typography>
                         </Link>
                         <Link
-                            to="/some"
+                            to="/"
                             style={{
                                 display: "block",
                                 color: "black",
@@ -196,7 +196,7 @@ const Footer = () => {
                                 color: "#c39052"
                             }}
                         >
-                            MYB Watches
+                            MYB Stylish Watches
                         </Typography>
 
                         <Typography
@@ -257,8 +257,8 @@ const Footer = () => {
                             <FaLinkedinIn
                                 className="social-icons linkedIn-icons"
                             />
-                            <FaGithub
-                                className="social-icons github-icons"
+                            <FaYoutube
+                                className="social-icons youtube-icons"
                             />
                         </Box>
                     </Grid>

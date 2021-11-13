@@ -12,7 +12,6 @@ import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
-
     <AuthProvider>
       <Router>
         <Switch>
@@ -51,7 +50,6 @@ function App() {
         </Switch>
       </Router>
     </AuthProvider>
-
   );
 }
 

@@ -42,3 +42,7 @@ code {
     transform: translate(-50%, 0%);
     bottom: -2px;
 }
+
+.css-13cu6dy-MuiPaper-root-MuiTableContainer-root {
+  max-width: 85vw !important;
+}

@@ -88,7 +88,7 @@ const AddProduct = () => {
                     sx={{ ml: 1 }}
                 />
                 <br />
-                <Button sx={{ mt: 2, ml: 1 }} type="submit" className="btn-regular">Purchase Now</Button>
+                <Button sx={{ mt: 2, ml: 1 }} type="submit" className="btn-regular">Add product</Button>
             </form>
         </Container >
     );

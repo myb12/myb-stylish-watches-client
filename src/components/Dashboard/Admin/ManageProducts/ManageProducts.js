@@ -14,7 +14,7 @@ const ManageProducts = () => {
             .then(data => setProducts(data))
     }, [])
 
-    const handleProductDelete = (id) => {
+    const handleDelete = (id) => {
         if (window.confirm('Do you really want to delete the product?')) {
             fetch(`https://secret-anchorage-33116.herokuapp.com/products/${id}`, {
                 method: 'DELETE',
@@ -39,7 +39,7 @@ const ManageProducts = () => {
             <Box style={{ display: 'flex', justifyContent: 'end', marginBottom: 10 }}>
                 <Button className="btn-regular" onClick={handleAddProduct}>Add product</Button>
             </Box>
-            <TableComponent forManageProducts products={products} handleProductDelete={handleProductDelete} />
+            <TableComponent forManageProducts products={products} handleDelete={handleDelete} />
         </div>
     );
 };

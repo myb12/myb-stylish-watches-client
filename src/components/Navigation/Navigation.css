@@ -38,10 +38,10 @@
 }
 
 .icon-close{
-    cursor: pointer;
     color: #fff;
-    margin-bottom: 16px;
     margin-left: auto;
+    height: 24px;
+    width: 24px;
 }
 .burger-menu-visible{
     transform: translateX(0);
@@ -52,11 +52,6 @@
     margin-right:5px;
 }
 
-/* .nav-item:hover,
-.burger-menu-item a:hover{
-    background-color: #fff;
-    color: black;
-} */
 
 /* Top and Bottom borders go out */
 div.topBotomBordersOut a:before, div.topBotomBordersOut a:after

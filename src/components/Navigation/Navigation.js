@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { FaBars, FaWindowClose } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
+import { AiOutlineClose } from 'react-icons/ai';
 import './Navigation.css';
 import logo from '../../images/myb.svg';
 import useAuth from '../../hooks/useAuth';
@@ -22,7 +23,7 @@ const Navigation = () => {
     const history = useHistory();
     const { user, logout } = useAuth();
 
-    const mobileDevice = useMediaQuery('(max-width:600px)');
+    const mobileDevice = useMediaQuery('(max-width:830px)');
 
     const handleClick = () => {
         setBurgerItem(!burgerItem);
@@ -30,6 +31,10 @@ const Navigation = () => {
 
     const handleScroll = () => {
         window.scrollTo(0, 0);
+    }
+
+    const handleLogoClick = () => {
+        history.push('/');
     }
 
     const handleLogOut = (e) => {
@@ -44,7 +49,7 @@ const Navigation = () => {
             <AppBar position="fixed" sx={{ backgroundColor: '#04293a' }}>
                 <Toolbar>
                     <span href="/#" className={!mobileDevice ? 'display-none' : 'nav-icon'} onClick={handleClick}>
-                        <FaBars />
+                        <FaBars style={{ height: 24, width: 24 }} />
                     </span>
 
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1, }} style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', }}>
@@ -53,7 +58,10 @@ const Navigation = () => {
                             src={logo}
                             sx={{ width: 60, height: 60, p: 1 }}
                             className={mobileDevice ? 'display-none' : ''}
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleLogoClick}
                         />
+
                         <small className={mobileDevice ? 'display-none' : ''} style={{ color: '#c39052' }}>Stylish Watch</small>
                     </Typography>
                     <Box className={mobileDevice ? 'display-none' : 'nav topBotomBordersOut'}>
@@ -100,7 +108,7 @@ const Navigation = () => {
             </AppBar>
 
             <Box sx={{ bgcolor: '#04293a' }} className={burgerItem ? 'burger-menu-item burger-menu-visible' : 'burger-menu-item'}>
-                <FaWindowClose className="icon-close" onClick={handleClick} />
+                <AiOutlineClose className="icon-close" onClick={handleClick} />
                 <NavLink activeStyle={activeStyle} to="/dashboard" className="nav-item">
                     {user?.displayName}
                 </NavLink>

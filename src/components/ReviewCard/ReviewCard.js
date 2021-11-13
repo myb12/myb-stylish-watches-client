@@ -1,6 +1,5 @@
 import { Button, Card, CardActions, CardContent, Divider, Grid, Rating, Typography } from '@mui/material';
 import React from 'react';
-import './ReviewCard.css';
 import { BsArrowRight } from 'react-icons/bs';
 
 const ReviewCard = ({ review }) => {
@@ -13,14 +12,14 @@ const ReviewCard = ({ review }) => {
                         {review.reviewer}
                     </Typography>
                     <Divider sx={{ my: 2 }} />
-                    <Rating name="read-only" value={review.rating} readOnly precision={0.5} sx={{ mb: 1.5 }} />
+                    <Rating name="read-only" value={+review.rating} readOnly precision={0.5} sx={{ mb: 1.5 }} />
                     <Typography variant="body2">
                         {review.review}
                     </Typography>
                 </CardContent>
-                <CardActions style={{display:'flex', justifyContent:'space-between'}}>
+                <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Button size="small" sx={{ color: '#c39052' }}>Learn More</Button>
-                    <BsArrowRight style={{marginRight:15}}/>
+                    <BsArrowRight style={{ marginRight: 15 }} />
                 </CardActions>
             </Card>
         </Grid>

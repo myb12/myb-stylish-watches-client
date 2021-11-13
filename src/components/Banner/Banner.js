@@ -18,11 +18,12 @@ const Banner = () => {
                 <Typography variant="h5" sx={{ color: '#fff' }}>
                     Stylish Watches
                 </Typography>
-                <Typography sx={{ color: '#fff', fontSize: 24, marginTop: 2 }}>
-                    Find your dream watch on
+
+                <Typography sx={{ color: '#fff', fontSize: 20, fontWeight: 200, marginTop: 2, textAlign: 'center' }}>
+                    From timeless classics to the most innovative independent brands, take your dream watch to new heights with a selection of exceptional pieces.
                 </Typography>
 
-                <Button className="btn-regular" onClick={handleAllProducts} style={{marginTop:10, width:'30%'}}>Explore</Button>
+                <Button className="btn-regular" onClick={handleAllProducts} style={{ marginTop: 10, width: '30%' }}>Explore</Button>
             </Container>
         </Box>
     );

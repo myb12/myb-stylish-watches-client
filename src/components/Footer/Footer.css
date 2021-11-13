@@ -44,11 +44,11 @@
     background-color: #1178B3;
 }
 
-.github-icons {
-    color: #24292f;
+.youtube-icons {
+    color: #FF0000;
 }
 
-.github-icons:hover {
+.youtube-icons:hover {
     color:#fff;
-    background-color:#24292f;
+    background-color:#FF0000;
 }

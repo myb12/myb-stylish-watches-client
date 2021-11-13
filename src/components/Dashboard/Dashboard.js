@@ -9,7 +9,7 @@ import List from '@mui/material/List';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Button, Card, CardContent, Container, Grid } from '@mui/material';
+import { Avatar, Button, Card, CardContent, Container, Grid } from '@mui/material';
 import { Switch, Route, Link, useRouteMatch, useHistory, useLocation } from "react-router-dom";
 import { MdDashboardCustomize, MdManageAccounts, MdPayment, MdReviews } from 'react-icons/md';
 import { useEffect, useState } from 'react';
@@ -26,6 +26,7 @@ import { GoDiffAdded, GoWatch } from 'react-icons/go';
 import useAuth from '../../hooks/useAuth';
 import AdminRoute from './Admin/AdminRoute/AdminRoute';
 import Pay from './User/Pay/Pay';
+import logo from '../../images/myb.svg'
 
 const drawerWidth = 280;
 
@@ -64,6 +65,10 @@ function Dashboard(props) {
     const handleLogOut = (e) => {
         e.preventDefault();
         logout();
+        history.push('/');
+    }
+
+    const handleLogoClick = () => {
         history.push('/');
     }
 
@@ -192,13 +197,18 @@ function Dashboard(props) {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ display: { sm: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div" >
-                        <Link to="/dashboard" className="dashboard-nav-item"> Dashboard</Link>
-                    </Typography>
+                    
+                        <Avatar
+                            alt="Remy Sharp"
+                            src={logo}
+                            sx={{ width: 60, height: 60, p: 1 }}
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleLogoClick}
+                        />
 
                     <a href="/" onClick={handleLogOut} className="dashboard-nav-item">Log out</a>
                 </Toolbar>
@@ -275,7 +285,7 @@ function Dashboard(props) {
                             </Box>
                         </Box>
 
-                        <Container maxWidth="md" sx={{ mt: 2 }} className="dashboard-content">
+                        <Container maxWidth="md" sx={{ mt: 6 }} className="dashboard-content">
                             <Grid container spacing={2}>
                                 <Grid item md={6} xs={12}>
                                     <Card variant="outlined" style={{ height: 250 }}>

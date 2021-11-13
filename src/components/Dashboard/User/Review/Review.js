@@ -2,7 +2,6 @@ import { Button, Container, Rating, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import useAuth from '../../../../hooks/useAuth';
-import './Review.css'
 
 const Review = () => {
     const [rating, setRating] = useState(2);

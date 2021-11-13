@@ -116,7 +116,7 @@ const Purchase = () => {
                         sx={{
                             width: '100%', m: 1
                         }}
-                        value={specificProduct?.title || ''}
+                        value={specificProduct?.price || ''}
                         id="standard-basic"
                         label="Product Price"
                         name="price"

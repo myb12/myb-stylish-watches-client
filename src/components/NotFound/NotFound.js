@@ -13,7 +13,7 @@ const NotFound = () => {
         <section className="not-found-container" >
             <Grid container>
                 <Grid item xs={12}>
-                    <Box className="four-zero-four-bg">
+                    <Box className="not-found-bg">
                     </Box>
                 </Grid>
             </Grid>

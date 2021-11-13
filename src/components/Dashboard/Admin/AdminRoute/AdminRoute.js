@@ -9,7 +9,7 @@ const AdminRoute = ({ children, ...rest }) => {
 
     if (isLoading || !admin) {
         return (
-            <Box style={{ display: 'flex', justifyContent: 'center' }}>
+            <Box style={{ display: 'flex', justifyContent: 'center', }}>
                 <CircularProgress style={{ color: '#c39052' }} />
             </Box>
         )

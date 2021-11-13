@@ -34,7 +34,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, allOrders, products, handleProductDelete, handleShip }) => {
+const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, allOrders, products, handleShip }) => {
 
     return (
         <TableContainer component={Paper} sx={{ maxWidth: '90vw' }}>
@@ -135,7 +135,7 @@ const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, a
                             </StyledTableCell>
 
                             <StyledTableCell align="left">
-                                <MdOutlineCancel onClick={() => handleProductDelete(product._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
+                                <MdOutlineCancel onClick={() => handleDelete(product._id)} style={{ color: '#dc3545', fontSize: 30, cursor: 'pointer' }} />
                             </StyledTableCell>
 
                         </StyledTableRow>

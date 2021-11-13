@@ -3,6 +3,7 @@
     font-weight: 700;
     color:#04293a;
     text-decoration: none;
+    border-left: 2px solid transparent;
 }
 .dashboard-item-content{
     margin: 10px;
