@@ -2,7 +2,7 @@ import { Alert, Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 const MakeAdmin = () => {
-    const [success, setSuccess] = useState(false);
+    const [success, setSuccess] = useState('');
     const [email, setEmail] = useState('');
     const token = sessionStorage.getItem('jwt');
 
@@ -24,9 +24,9 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    setSuccess(true);
+                    setSuccess('success');
                 } else {
-                    setSuccess(false);
+                    setSuccess('fail');
                 }
             })
     }
@@ -45,7 +45,8 @@ const MakeAdmin = () => {
                 <br />
                 <Button type="submit" sx={{ mt: 1 }} className="btn-regular">Make Admin</Button>
             </form>
-            {success && <Alert severity="success" sx={{ mt: 2 }}>Admin made successfully!</Alert>}
+            {success === 'success' && <Alert severity="success" sx={{ mt: 2 }}>Admin made successfully!</Alert>}
+            {success === 'fail' && <Alert severity="error" sx={{ mt: 2 }}>Sorry, No user with this email!</Alert>}
         </div >
     );
 };
