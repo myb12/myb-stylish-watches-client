@@ -19,7 +19,7 @@ const Banner = () => {
                     Stylish Watches
                 </Typography>
 
-                <Typography sx={{ color: '#fff', fontSize: 20, fontWeight: 200, marginTop: 2, textAlign: 'center' }}>
+                <Typography sx={{ color: '#fff', fontSize: 20, fontWeight: 300, marginTop: 2, textAlign: 'center' }}>
                     From timeless classics to the most innovative independent brands, take your dream watch to new heights with a selection of exceptional pieces.
                 </Typography>
 

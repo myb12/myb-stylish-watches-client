@@ -87,7 +87,7 @@ function Dashboard(props) {
 
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to="/dashboard" className="dashboard-item" style={{ borderLeft: !dashboardPageUrl && '2px solid #04293a' }}>
+                    <Link to="/dashboard" className="dashboard-item" style={{ width: "100%", borderLeft: !dashboardPageUrl && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
                             <MdDashboardCustomize style={{ marginRight: 10, }} />
                             Dashboard
@@ -97,7 +97,7 @@ function Dashboard(props) {
             </List>
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to={`${url}/pay`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'pay' && '2px solid #04293a' }}>
+                    <Link to={`${url}/pay`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'pay' && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
                             <MdPayment style={{ marginRight: 10, }} />
                             Pay
@@ -107,7 +107,7 @@ function Dashboard(props) {
             </List>
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to={`${url}/myOrders`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'myOrders' && '2px solid #04293a' }}>
+                    <Link to={`${url}/myOrders`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'myOrders' && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
                             <BsMinecartLoaded style={{ marginRight: 10, }} />
                             My order
@@ -117,7 +117,7 @@ function Dashboard(props) {
             </List>
             <List style={{ padding: "0" }}>
                 <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                    <Link to={`${url}/review`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'review' && '2px solid #04293a' }}>
+                    <Link to={`${url}/review`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'review' && '2px solid #04293a' }}>
                         <span className="dashboard-item-content">
                             <MdReviews style={{ marginRight: 10, }} />
                             Review
@@ -132,7 +132,7 @@ function Dashboard(props) {
                     <Divider />
                     <List style={{ padding: "0" }}>
                         <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                            <Link to={`${url}/manageAllOrders`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'manageAllOrders' && '2px solid #04293a' }}>
+                            <Link to={`${url}/manageAllOrders`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'manageAllOrders' && '2px solid #04293a' }}>
                                 <span className="dashboard-item-content">
                                     <BsMinecartLoaded style={{ marginRight: 10, }} />
                                     Manage all Orders
@@ -143,7 +143,7 @@ function Dashboard(props) {
 
                     <List style={{ padding: "0" }}>
                         <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                            <Link to={`${url}/addProduct`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'addProduct' && '2px solid #04293a' }}>
+                            <Link to={`${url}/addProduct`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'addProduct' && '2px solid #04293a' }}>
                                 <span className="dashboard-item-content">
                                     <GoDiffAdded style={{ marginRight: 10, }} />
                                     Add a Product
@@ -153,7 +153,7 @@ function Dashboard(props) {
                     </List>
                     <List style={{ padding: "0" }}>
                         <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                            <Link to={`${url}/makeAdmin`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'makeAdmin' && '2px solid #04293a' }}>
+                            <Link to={`${url}/makeAdmin`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'makeAdmin' && '2px solid #04293a' }}>
                                 <span className="dashboard-item-content">
                                     <MdManageAccounts style={{ marginRight: 10, }} />
                                     Make Admin
@@ -163,7 +163,7 @@ function Dashboard(props) {
                     </List>
                     <List style={{ padding: "0" }}>
                         <Button color="inherit" style={{ width: "100%", justifyContent: "start", }}>
-                            <Link to={`${url}/manageProducts`} className="dashboard-item" style={{ borderLeft: dashboardPageUrl === 'manageProducts' && '2px solid #04293a' }}>
+                            <Link to={`${url}/manageProducts`} className="dashboard-item" style={{ width: "100%", borderLeft: dashboardPageUrl === 'manageProducts' && '2px solid #04293a' }}>
                                 <span className="dashboard-item-content">
                                     <AiFillSetting style={{ marginRight: 10, }} />
                                     Manage Products

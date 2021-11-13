@@ -227,7 +227,7 @@ const Footer = () => {
                                 variant="h5"
                                 style={{ paddingLeft: 10, color: "#c39052" }}
                             >
-                                MYB Watches
+                                MYB Stylish Watches
                             </Typography>
                         </div>
                     </Grid>
