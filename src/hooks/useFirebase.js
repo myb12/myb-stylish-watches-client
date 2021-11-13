@@ -31,7 +31,7 @@ const useFirebase = () => {
                 }).then(() => {
                 }).catch((error) => {
                 });
-                history.replace('/');
+                history.replace('/dashboard');
             })
             .catch((error) => {
                 setAuthError(error.message);
