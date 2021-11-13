@@ -34,6 +34,7 @@ const MakeAdmin = () => {
             <Typography variant="h4" className="title">Make an Admin</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
+                    required
                     sx={{ width: '70%' }}
                     onBlur={handleEmail}
                     label="Insert an email to make admin"

@@ -43,6 +43,7 @@ const AddProduct = () => {
             <Typography variant="h4" className="title">Add a Product</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
+                    required
                     sx={{
                         width: '100%', m: 1
                     }}
@@ -53,6 +54,7 @@ const AddProduct = () => {
                     variant="standard" />
 
                 <TextField
+                    required
                     sx={{
                         width: '100%', m: 1
                     }}
@@ -61,6 +63,7 @@ const AddProduct = () => {
                     onChange={handleChange}
                     variant="standard" />
                 <TextField
+                    required
                     sx={{
                         width: '100%', m: 1
                     }}
@@ -70,6 +73,7 @@ const AddProduct = () => {
                     variant="standard" />
 
                 <TextField
+                    required
                     label="Product Desription"
                     name="description"
                     multiline

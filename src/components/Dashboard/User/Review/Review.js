@@ -46,6 +46,7 @@ const Review = () => {
             <Typography variant="h4" className="title">Add a Review</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
+                    required
                     name="review"
                     placeholder="Please Add your Review"
                     label="Add Review"
