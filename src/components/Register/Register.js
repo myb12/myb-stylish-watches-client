@@ -105,7 +105,7 @@ export default function Register() {
                                 sx={{ mt: 2 }}
                                 onBlur={handleOnBlur}
                             />
-                            <Button type="submit" variant="contained" className="inputFields" sx={{ mt: 2 }}>
+                            <Button type="submit" className="inputFields btn-regular" sx={{ mt: 2 }}>
                                 Sign up
                             </Button>
                         </form>

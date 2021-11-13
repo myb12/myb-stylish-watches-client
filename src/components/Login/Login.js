@@ -90,7 +90,7 @@ export default function Login() {
                                 sx={{ mt: 2 }}
                             />
 
-                            <Button variant="contained" type="submit" className="inputFields" sx={{ mt: 2 }}>
+                            <Button  type="submit" className="inputFields btn-regular" sx={{ mt: 2 }}>
                                 Login
                             </Button>
                         </form>
