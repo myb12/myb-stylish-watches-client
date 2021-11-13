@@ -37,7 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const TableComponent = ({ forAdmin, forManageProducts, myOrders, handleDelete, allOrders, products, handleShip }) => {
 
     return (
-        <TableContainer component={Paper} sx={{ maxWidth: '90vw' }}>
+        <TableContainer component={Paper} sx={{ maxWidth: '85vw' }}>
             <Table aria-label="customized table">
                 <TableHead>
                     <TableRow>
