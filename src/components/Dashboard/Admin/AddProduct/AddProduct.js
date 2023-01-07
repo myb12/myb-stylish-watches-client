@@ -1,6 +1,7 @@
 import { Button, Container, Rating, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import { BASE_URL } from '../../../../config/config.js';
 
 const AddProduct = () => {
     const [rating, setRating] = useState(0);
@@ -21,7 +22,7 @@ const AddProduct = () => {
         const newProduct = { ...product }
         newProduct.rating = rating;
 
-        fetch('https://secret-anchorage-33116.herokuapp.com/product', {
+        fetch(`${BASE_URL}/product`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

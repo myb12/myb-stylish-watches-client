@@ -27,6 +27,7 @@ import AdminRoute from './Admin/AdminRoute/AdminRoute';
 import Pay from './User/Pay/Pay';
 import logo from '../../images/myb.svg';
 import './Dashboard.css';
+import { BASE_URL } from '../../config/config.js';
 
 const drawerWidth = 280;
 
@@ -44,13 +45,13 @@ function Dashboard(props) {
     const notDashboardUrl = location.pathname.split('/')[2];
 
     useEffect(() => {
-        fetch('https://secret-anchorage-33116.herokuapp.com/products')
+        fetch(`${BASE_URL}/products`)
             .then(res => res.json())
             .then(data => setTotalProducts(data))
     }, [])
 
     useEffect(() => {
-        fetch('https://secret-anchorage-33116.herokuapp.com/orders')
+        fetch(`${BASE_URL}/orders`)
             .then(res => res.json())
             .then(data => setTotalOrders(data))
     }, [])

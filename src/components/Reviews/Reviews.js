@@ -1,13 +1,14 @@
 import { CircularProgress, Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
+import { BASE_URL } from '../../config/config.js';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import './Reviews.css'
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('https://secret-anchorage-33116.herokuapp.com/reviews')
+        fetch(`${BASE_URL}/reviews`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

@@ -2,6 +2,7 @@ import { Button, Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { BASE_URL } from '../../config/config.js';
 import useAuth from '../../hooks/useAuth';
 import Navigation from '../Navigation/Navigation';
 
@@ -12,7 +13,7 @@ const Purchase = () => {
     const { productId } = useParams();
 
     useEffect(() => {
-        fetch(`https://secret-anchorage-33116.herokuapp.com/product/${productId}`)
+        fetch(`${BASE_URL}/product/${productId}`)
             .then(res => res.json())
             .then(data => {
                 setSpecificProduct(data);
@@ -37,7 +38,7 @@ const Purchase = () => {
         delete specificProduct._id;
         delete specificProduct.description;
 
-        fetch('https://secret-anchorage-33116.herokuapp.com/orders', {
+        fetch(`${BASE_URL}/orders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

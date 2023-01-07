@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { BASE_URL } from '../../../../config/config.js';
 import TableComponent from '../../../Table/TableComponent';
 
 const ManageAllOrders = () => {
@@ -7,13 +8,13 @@ const ManageAllOrders = () => {
     const [isShipped, setIsShipped] = useState(false);
 
     useEffect(() => {
-        fetch('https://secret-anchorage-33116.herokuapp.com/orders')
+        fetch(`${BASE_URL}/orders`)
             .then(res => res.json())
             .then(data => setAllOrders(data))
     }, [isShipped])
 
     const handleShip = (id) => {
-        fetch(`https://secret-anchorage-33116.herokuapp.com/orders/${id}`, {
+        fetch(`${BASE_URL}/orders/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -29,7 +30,7 @@ const ManageAllOrders = () => {
 
     const handleDelete = (id) => {
         if (window.confirm('Do you really want to delete the order?')) {
-            fetch(`https://secret-anchorage-33116.herokuapp.com/my-orders/${id}`, {
+            fetch(`${BASE_URL}/my-orders/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

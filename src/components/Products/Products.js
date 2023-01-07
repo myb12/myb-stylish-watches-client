@@ -4,11 +4,12 @@ import CardComponent from '../CardComponent/CardComponent';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 import { Box } from '@mui/system';
+import { BASE_URL } from '../../config/config.js';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('https://secret-anchorage-33116.herokuapp.com/products')
+        fetch(`${BASE_URL}/products`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

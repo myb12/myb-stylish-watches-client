@@ -2,6 +2,7 @@ import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import { BASE_URL } from '../../../../config/config.js';
 import TableComponent from '../../../Table/TableComponent';
 
 const ManageProducts = () => {
@@ -9,14 +10,14 @@ const ManageProducts = () => {
     const history = useHistory()
 
     useEffect(() => {
-        fetch('https://secret-anchorage-33116.herokuapp.com/products')
+        fetch(`${BASE_URL}/products`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
 
     const handleDelete = (id) => {
         if (window.confirm('Do you really want to delete the product?')) {
-            fetch(`https://secret-anchorage-33116.herokuapp.com/products/${id}`, {
+            fetch(`${BASE_URL}/products/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

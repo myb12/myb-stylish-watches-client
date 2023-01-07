@@ -1,6 +1,7 @@
 import initializeFirebase from "../Firebase/firebase.init";
 import { useState, useEffect } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider, updateProfile, getIdToken } from "firebase/auth";
+import { BASE_URL } from "../config/config";
 
 
 // initialize firebase app
@@ -96,7 +97,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName }
-        fetch('https://secret-anchorage-33116.herokuapp.com/users', {
+        fetch(`${BASE_URL}/users`, {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -108,7 +109,7 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
-        fetch(`https://secret-anchorage-33116.herokuapp.com/users/${user.email}`)
+        fetch(`${BASE_URL}/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin);

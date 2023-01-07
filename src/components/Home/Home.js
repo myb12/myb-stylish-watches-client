@@ -7,11 +7,12 @@ import Footer from '../Footer/Footer';
 import { CircularProgress, Container, Grid, Typography } from '@mui/material';
 import CardComponent from '../CardComponent/CardComponent';
 import { Box } from '@mui/system';
+import { BASE_URL } from '../../config/config';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('https://secret-anchorage-33116.herokuapp.com/products')
+        fetch(`${BASE_URL}/products`)
             .then(res => res.json())
             .then(data => {
                 const limitedData = data.slice(0, 6);

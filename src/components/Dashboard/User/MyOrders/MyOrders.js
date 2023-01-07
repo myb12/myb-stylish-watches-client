@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { BASE_URL } from '../../../../config/config.js';
 import useAuth from '../../../../hooks/useAuth';
 import TableComponent from '../../../Table/TableComponent';
 
@@ -8,7 +9,7 @@ const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`https://secret-anchorage-33116.herokuapp.com/my-orders?email=${user.email}`, {
+        fetch(`${BASE_URL}/my-orders?email=${user.email}`, {
             method: 'POST',
         })
             .then(res => res.json())
@@ -19,7 +20,7 @@ const MyOrders = () => {
 
     const handleDelete = (id) => {
         if (window.confirm('Do you really want to delete the order?')) {
-            fetch(`https://secret-anchorage-33116.herokuapp.com/my-orders/${id}`, {
+            fetch(`${BASE_URL}/my-orders/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
