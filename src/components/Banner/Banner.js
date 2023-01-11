@@ -10,7 +10,7 @@ const Banner = () => {
         history.push('/products');
     }
     return (
-        <Box className="banner-container" style={{ backgroundColor: 'cyan' }}>
+        <Box className="banner-container">
             <Container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <Typography variant="h3" sx={{ color: '#fff', fontWeight: 'bold' }}>
                     MYB
@@ -19,7 +19,7 @@ const Banner = () => {
                     Stylish Watches
                 </Typography>
 
-                <Typography sx={{ color: '#fff', fontSize: 20, fontWeight: 300, marginTop: 2, textAlign: 'center' }}>
+                <Typography sx={{ color: '#fff', fontSize: 20,  marginTop: 2, textAlign: 'center' }}>
                     From timeless classics to the most innovative independent brands, take your dream watch to new heights with a selection of exceptional pieces.
                 </Typography>
 

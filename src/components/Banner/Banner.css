@@ -6,7 +6,10 @@
     background-size: cover;
     position: relative;
     z-index: 1;
-    padding: 250px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .banner-container::before {
@@ -14,7 +17,7 @@
     bottom: 0;
     content: "";
     left: 0;
-    opacity: 0.5;
+    opacity: 0.4;
     position: absolute;
     right: 0;
     top: 0;
